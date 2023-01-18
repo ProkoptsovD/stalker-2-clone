@@ -1,0 +1,11 @@
+:root {
+  --tr-speed-100: 100ms;
+  --tr-speed-200: 200ms;
+  --tr-speed-300: 250ms;
+  --tr-speed-350: 300ms;
+  --tr-speed-400: 500ms;
+  --tr-speed-500: 600ms;
+  --tr-func-400: ease-in;
+  --tr-func-500: ease-in-out;
+  --tr-func-cb-100: cubic-bezier(0.25, 1, 0.5, 1);
+}

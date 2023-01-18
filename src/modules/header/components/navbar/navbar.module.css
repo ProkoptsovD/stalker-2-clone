@@ -1,0 +1,70 @@
+:root {
+  --mr-top: 0.75rem;
+}
+
+.navbar {
+  margin-top: var(--mr-top);
+}
+
+.link_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.25rem;
+}
+
+.link {
+  position: relative;
+  display: block;
+
+  font-family: var(--f-ff-500);
+  font-weight: 100;
+  font-size: var(--f-fs-400);
+  text-decoration: none;
+  text-transform: uppercase;
+  tab-size: 4;
+  line-height: 1.5;
+  opacity: 0.7;
+
+  color: var(--clr-primary-300);
+
+  transition: opacity var(--tr-speed-100) var(--tr-func-400);
+}
+
+.link::before {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  content: '';
+  height: 1px;
+  width: 0;
+
+  background-color: var(--clr-primary-400);
+
+  transition: all var(--tr-speed-500) var(--tr-func-cb-100);
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.link:hover::before {
+  left: 0;
+  right: auto;
+  width: 100%;
+  opacity: 1;
+}
+
+.link:visited {
+  color: inherit;
+}
+
+.active {
+  opacity: 1;
+}
+
+.link.active::before {
+  width: 100%;
+}

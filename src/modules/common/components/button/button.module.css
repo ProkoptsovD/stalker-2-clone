@@ -1,0 +1,103 @@
+:root {
+  --btn-height: 2.625rem;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  height: var(--btn-height);
+
+  background-color: transparent;
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-700);
+  font-size: var(--f-fs-400);
+  text-decoration: none;
+  color: var(--clr-dark-400);
+  padding: 0;
+}
+
+.button:visited {
+  color: var(--clr-dark-400);
+}
+
+.button:hover .main_icon:not(.secondary) {
+  filter: drop-shadow(var(--shdw-500));
+  left: 1.725rem;
+}
+
+.button:hover .content_part:not(.secondary):before {
+  filter: drop-shadow(var(--shdw-400));
+  left: -1px;
+}
+
+.content_part::before {
+  --size: 0.685rem;
+  --delta: 0rem;
+
+  content: '';
+  left: calc(var(--size) * -1);
+  border-left: var(--size) solid var(--clr-primary-400);
+  position: absolute;
+  border-top: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
+  border-bottom: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
+
+  transition: left 200ms;
+  z-index: 2;
+}
+
+.button :where(.before, .after) {
+  display: block;
+
+  height: var(--btn-height);
+}
+
+.before {
+  width: var(--btn-height);
+  position: sticky;
+  z-index: 3;
+}
+
+.before.secondary {
+  width: 0.9rem;
+}
+
+.after {
+  width: 1rem;
+  height: var(--btn-height);
+  transform: translateX(-1px);
+}
+
+.content_part {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 1rem;
+  text-transform: uppercase;
+  background-color: var(--clr-primary-300);
+}
+
+.content_part.secondary {
+  padding-left: 2rem;
+}
+
+.main_icon {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--btn-height) / 1.75);
+  width: calc(var(--btn-height) / 1.75);
+  height: calc(var(--btn-height) / 1.75);
+
+  aspect-ratio: 1 / 1;
+
+  transform: translate(calc(var(--btn-height) / 3 * -1), -50%);
+  transition: left 200ms;
+  z-index: 3;
+}
+
+.main_icon.secondary {
+  transform: translate(calc(var(--btn-height) / 4 * -1), -50%);
+}

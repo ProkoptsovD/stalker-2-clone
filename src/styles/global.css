@@ -1,0 +1,22 @@
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: var(--f-ff-400);
+  font-weight: var(--f-fw-400);
+  font-size: var(--f-fs-350);
+  line-height: var(--f-lh-400);
+
+  color: var(--clr-primary-300);
+  background-color: var(--clr-dark-400);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}

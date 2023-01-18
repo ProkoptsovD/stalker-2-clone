@@ -1,0 +1,1 @@
+export const REVERSE_ANIMATION_SPEED = 0.55;

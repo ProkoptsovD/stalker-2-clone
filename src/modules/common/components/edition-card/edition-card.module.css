@@ -1,0 +1,137 @@
+:root {
+  --padding-tablet: 2rem;
+  --padding-mobile: 1.5rem;
+  --animation-duration: 800ms;
+  --animation-delay: 250ms;
+  --animation-function: ease-in-out;
+}
+
+.card {
+  position: relative;
+  max-width: 23.75rem;
+  width: 100%;
+  max-height: 42.625rem;
+  aspect-ratio: 1 / 1.795;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 105% 100%;
+}
+
+.card_image {
+  position: absolute;
+  inset: 0;
+}
+
+.card_content_wrapper {
+  padding: var(--padding-mobile);
+}
+
+@media screen and (min-width: 760px) {
+  .card_content_wrapper {
+    padding: var(--padding-tablet);
+  }
+}
+
+.card_title {
+  position: sticky;
+  margin-bottom: 0.5rem;
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-400);
+  font-size: var(--f-fs-625);
+  text-transform: uppercase;
+  color: var(--clr-light-400);
+
+  z-index: 2;
+}
+
+.card_footer {
+}
+
+.edition_cost {
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.separator {
+  position: sticky;
+  height: 2px;
+  margin-bottom: 1rem;
+  fill: var(--clr-primary-300);
+
+  transform: translateX(calc(var(--padding-mobile) * -1));
+  transition: fill var(--tr-speed-200) var(--tr-func-400);
+
+  z-index: 2;
+}
+
+.separator_primary {
+  fill: var(--clr-primary-400);
+}
+
+.rotation_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  margin: 0 auto;
+  padding: 0;
+
+  border: none;
+  background-color: transparent;
+}
+
+.rotation_btn :where(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+.spin_on_render {
+  animation: spin-clockwise-on-render var(--animation-duration) var(--animation-function)
+    var(--animation-delay) normal forwards;
+}
+
+.spin_clockwise {
+  transform: rotate(180deg);
+  animation: spin-clockwise var(--animation-duration) var(--animation-function)
+    var(--animation-delay) normal forwards;
+}
+
+.spin_counterclockwise {
+  transform: rotate(0deg);
+  animation: spin-counterclockwise var(--animation-duration) var(--animation-function)
+    var(--animation-delay) normal forwards;
+}
+
+@keyframes spin-clockwise-on-render {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes spin-clockwise {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin-counterclockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,37 @@
+:root {
+  --humburger-size: 1.25rem;
+  --line-height: 2px;
+}
+
+.hamburger_btn {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: var(--humburger-size);
+  height: var(--humburger-size);
+
+  padding: 0.25rem 0.075rem;
+
+  border: none;
+  background-color: transparent;
+}
+
+.hamburger_btn .line {
+  width: 100%;
+  height: var(--line-height);
+
+  background-color: var(--clr-primary-300);
+  opacity: 1;
+  transition: all var(--tr-speed-350) var(--tr-func-500);
+}
+
+.hamburger_btn[aria-expanded='true'] .line:nth-child(1) {
+  transform: translateY(0.25rem) rotate(45deg);
+}
+.hamburger_btn[aria-expanded='true'] .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger_btn[aria-expanded='true'] .line:nth-child(3) {
+  transform: translateY(-0.375rem) rotate(-45deg);
+}

@@ -1,0 +1,21 @@
+:root {
+  --l-gradient-header: linear-gradient(
+    180deg,
+    var(--clr-dark-800) -21.24%,
+    rgba(24, 21, 18, 0) 93.16%
+  );
+  --l-gradient-header-scrolled: linear-gradient(
+    180deg,
+    var(--clr-dark-800),
+    var(--clr-dark-800) 24.27%,
+    rgba(24, 21, 18, 0.8) 71.5%,
+    rgba(24, 21, 18, 0.7) 78.4%,
+    rgba(24, 21, 18, 0.6) 81.85%,
+    rgba(24, 21, 18, 0.5) 85.08%,
+    rgba(24, 21, 18, 0.4) 88.53%,
+    rgba(24, 21, 18, 0.3) 91.55%,
+    rgba(24, 21, 18, 0.2) 94.14%,
+    rgba(24, 21, 18, 0.1) 97.37%,
+    rgba(24, 21, 18, 0)
+  );
+}

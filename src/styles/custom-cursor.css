@@ -1,0 +1,34 @@
+.cursor {
+  cursor: url('../assets/images/png/cursor-frames/frame-01.png'), auto;
+  animation: cursor 0.8s linear infinite;
+}
+
+@keyframes cursor {
+  0% {
+    cursor: url('../assets/images/png/cursor-frames/frame-01.png'), auto;
+  }
+  12.5% {
+    cursor: url('../assets/images/png/cursor-frames/frame-02.png'), auto;
+  }
+  25% {
+    cursor: url('../assets/images/png/cursor-frames/frame-03.png'), auto;
+  }
+  37.5% {
+    cursor: url('../assets/images/png/cursor-frames/frame-04.png'), auto;
+  }
+  50% {
+    cursor: url('../assets/images/png/cursor-frames/frame-05.png'), auto;
+  }
+  62.5% {
+    cursor: url('../assets/images/png/cursor-frames/frame-06.png'), auto;
+  }
+  75% {
+    cursor: url('../assets/images/png/cursor-frames/frame-07.png'), auto;
+  }
+  87.5% {
+    cursor: url('../assets/images/png/cursor-frames/frame-08.png'), auto;
+  }
+  100% {
+    cursor: url('../assets/images/png/cursor-frames/frame-01.png'), auto;
+  }
+}
