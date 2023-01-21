@@ -6,7 +6,8 @@ import {
   buttonContent,
   logoImgAlt,
   addToWishBtnContent,
-  footerText
+  footerText,
+  heroSectionHeading
 } from './constants/hero.const';
 import { updateCustomCssProperty } from '../../utils/update-custom-css-property';
 
@@ -58,40 +59,43 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   function preorderButtonClickHandler() {}
 
   return (
-    <div className={styles.outer_wrapper}>
-      <div className={`container ${styles.hero_wrapper}`} onMouseMove={mouseMoveHandler}>
-        <div className={styles.content_layout}>
-          <img className={styles.logo} src={logoImg} alt={logoImgAlt} />
+    <section>
+      <h1 className="hidden">{heroSectionHeading}</h1>
+      <div className={styles.outer_wrapper}>
+        <div className={`container ${styles.hero_wrapper}`} onMouseMove={mouseMoveHandler}>
+          <div className={styles.content_layout}>
+            <img className={styles.logo} src={logoImg} alt={logoImgAlt} />
 
-          <ButtonComponent
-            content={buttonContent}
-            onClick={preorderButtonClickHandler}
-            className={styles.preoder_btn}
-          />
+            <ButtonComponent
+              content={buttonContent}
+              onClick={preorderButtonClickHandler}
+              className={styles.preoder_btn}
+            />
 
-          <Button
-            content={addToWishBtnContent}
-            variant="inverse"
-            as="a"
-            className={styles.add_to_wish}
-          />
-        </div>
-      </div>
-      <div className={`${styles.hero_footer}`}>
-        <div>
-          <strong className={`container ${styles.available_date}`}>
-            {availableText} {availableDate}
-          </strong>
-
-          <div className={`container ${styles.distributors_wrapper}`}>
-            <p className={styles.text}>{footerText}</p>
-            <Distributors items={distributorList} />
+            <Button
+              content={addToWishBtnContent}
+              variant="inverse"
+              as="a"
+              className={styles.add_to_wish}
+            />
           </div>
         </div>
-      </div>
+        <div className={`${styles.hero_footer}`}>
+          <div>
+            <strong className={`container ${styles.available_date}`}>
+              {availableText} {availableDate}
+            </strong>
 
-      {isDesktop ? <ParalaxBg /> : <MobileBg />}
-    </div>
+            <div className={`container ${styles.distributors_wrapper}`}>
+              <p className={styles.text}>{footerText}</p>
+              <Distributors items={distributorList} />
+            </div>
+          </div>
+        </div>
+
+        {isDesktop ? <ParalaxBg /> : <MobileBg />}
+      </div>
+    </section>
   );
 }
 

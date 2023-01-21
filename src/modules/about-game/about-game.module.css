@@ -1,0 +1,17 @@
+:root {
+  /* depends on hero footer element size */
+  --section-padding-top: 120px;
+}
+
+.about_section {
+  padding-top: var(--section-padding-top);
+  background-image: url('../../assets/images/webp/sm-bg.webp');
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  background-size: 100%;
+}
+
+.divider {
+  margin-inline: auto;
+  margin-top: 1.75rem;
+}

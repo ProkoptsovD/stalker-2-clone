@@ -1,0 +1,33 @@
+.features_list {
+  color: var(--clr-primary-400);
+}
+
+.list_item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-left: 0.5rem;
+
+  font-size: var(--f-fs-400);
+}
+
+.list_item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.list_item::before {
+  display: block;
+  content: '';
+  width: 0.35em;
+  height: 0.35em;
+
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+  background-color: var(--clr-primary-400);
+}
+
+.item_content {
+  margin-left: 1rem;
+}

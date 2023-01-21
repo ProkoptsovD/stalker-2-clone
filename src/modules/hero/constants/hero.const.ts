@@ -23,3 +23,5 @@ export const X_MOVEMENT_SPEED_COEFFICIENT = {
 
 export const footerText =
   'Preorder is available via Steam, Epic Games Store, Microsoft Store, GOG as well as on Xbox Series X and Xbox Series S.';
+
+export const heroSectionHeading = 'Main part of website with game logo';
