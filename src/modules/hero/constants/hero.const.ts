@@ -3,6 +3,8 @@ export const buttonContent = 'Preorder now';
 export const logoImgAlt = 'S.T.A.L.K.E.R 2 Logo';
 export const bgImgAlt = 'Heavy clouds, industial zone, radioactive sun and stalker character';
 
+export const addToWishBtnContent = 'Add to wishlist';
+
 export const ARIA_LABELS = {
   BG_IMG: {
     CLOUD: 'Heavy clouds with industrial zone under it',
@@ -18,3 +20,6 @@ export const X_MOVEMENT_SPEED_COEFFICIENT = {
   SUN: 400,
   HERO: 700
 };
+
+export const footerText =
+  'Preorder is available via Steam, Epic Games Store, Microsoft Store, GOG as well as on Xbox Series X and Xbox Series S.';

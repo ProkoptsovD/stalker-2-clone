@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 2rem;
+  max-width: 100%;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  overflow-x: hidden;
+  width: fit-content;
+}
+
+.icon {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+}
