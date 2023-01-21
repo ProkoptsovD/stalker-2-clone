@@ -8,6 +8,7 @@ export enum ICON_NAME {
   DISCORD_ALT = 'icon-discord-02',
   EMAIL = 'icon-email-01',
   EXPERIENCE = 'icon-exp-01',
+  GREY_BEFORE = 'icon-grey-before-01',
   GREY_AFTER = 'icon-grey-after-01',
   GSC_LOGO = 'icon-gsc-logo-white-01',
   CHEVRON_LEFT = 'icon-indicator-left-01',
@@ -20,7 +21,7 @@ export enum ICON_NAME {
   GOG_LOGO = 'icon-logo-gog-01',
   STEAM_LOGO = 'icon-logo-steam-01',
   WINDOWS_LOGO = 'icon-logo-windows-01',
-  XBOX_LOGO = 'con-logo-xbox-01',
+  XBOX_LOGO = 'icon-logo-xbox-01',
   MULTI_USERS = 'icon-multi-users-01',
   MULTIPLAYER = 'icon-multiplayer-01',
   MUSIC = 'icon-music-01',
@@ -50,5 +51,6 @@ export enum ICON_NAME {
   PLUS = 'icon-plus-01',
   EMAIL_02 = 'icon-email-02',
   PLUS_02 = 'icon-plus-02',
-  EXCLAMATION = 'icon-exclamation-01'
+  EXCLAMATION = 'icon-exclamation-01',
+  EPIC_GAMES_LOGO = 'icon-logo-epic-games-01'
 }

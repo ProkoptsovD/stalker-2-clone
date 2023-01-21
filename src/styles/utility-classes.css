@@ -1,0 +1,9 @@
+.container {
+  padding-inline: 0.875rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-inline: 1.25rem;
+  }
+}

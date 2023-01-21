@@ -5,18 +5,25 @@ import {
   X_MOVEMENT_SPEED_COEFFICIENT,
   buttonContent,
   logoImgAlt,
-  ARIA_LABELS,
-  bgImgAlt
+  addToWishBtnContent,
+  footerText
 } from './constants/hero.const';
 import { updateCustomCssProperty } from '../../utils/update-custom-css-property';
 
-import logoImg from '../../assets/images/png/s2-logo.png';
-import bgImg from '../../assets/images/webp/hero_mobile.webp';
 import styles from './hero.module.css';
-import HeartbeatButton from '../common/components/heartbeat-button';
-import useMediaQuery from '../../hooks/use-media-query';
+import logoImg from '../../assets/images/png/s2-logo.png';
 
-function Hero() {
+import HeartbeatButton, { HeartbeatButtonProps } from '../common/components/heartbeat-button';
+import useMediaQuery from '../../hooks/use-media-query';
+import ParalaxBg from './components/paralax-bg';
+import MobileBg from './components/mobile-bg';
+import Button from '../common/components/button';
+import Distributors from '../common/components/distributors';
+
+import { distributorList } from '../common/constants/distributors.const';
+import { availableDate, availableText } from '../common/constants/release-date.const';
+
+function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   const prevClientXPos = React.useRef<number>(0);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
@@ -48,22 +55,48 @@ function Hero() {
     );
   }
 
-  return (
-    <div className={styles.hero_wrapper} onMouseMove={mouseMoveHandler}>
-      <img className={styles.logo} src={logoImg} alt={logoImgAlt} />
-      <HeartbeatButton content={buttonContent} className={styles.preoder_btn} />
+  function preorderButtonClickHandler() {}
 
-      {isDesktop ? (
-        <>
-          <div className={styles.cloud} role="img" aria-label={ARIA_LABELS.BG_IMG.CLOUD} />
-          <div className={styles.sun} role="img" aria-label={ARIA_LABELS.BG_IMG.SUN} />
-          <div className={styles.hero} role="img" aria-label={ARIA_LABELS.BG_IMG.HERO} />
-        </>
-      ) : (
-        <img src={bgImg} className={styles.mobile_bg_img} alt={bgImgAlt} />
-      )}
+  return (
+    <div className={styles.outer_wrapper}>
+      <div className={`container ${styles.hero_wrapper}`} onMouseMove={mouseMoveHandler}>
+        <div className={styles.content_layout}>
+          <img className={styles.logo} src={logoImg} alt={logoImgAlt} />
+
+          <ButtonComponent
+            content={buttonContent}
+            onClick={preorderButtonClickHandler}
+            className={styles.preoder_btn}
+          />
+
+          <Button
+            content={addToWishBtnContent}
+            variant="inverse"
+            as="a"
+            className={styles.add_to_wish}
+          />
+        </div>
+      </div>
+      <div className={`${styles.hero_footer}`}>
+        <div>
+          <strong className={`container ${styles.available_date}`}>
+            {availableText} {availableDate}
+          </strong>
+
+          <div className={`container ${styles.distributors_wrapper}`}>
+            <p className={styles.text}>{footerText}</p>
+            <Distributors items={distributorList} />
+          </div>
+        </div>
+      </div>
+
+      {isDesktop ? <ParalaxBg /> : <MobileBg />}
     </div>
   );
 }
 
 export default Hero;
+
+export type HeroProps = {
+  ButtonComponent?: React.FunctionComponent<HeartbeatButtonProps>;
+};

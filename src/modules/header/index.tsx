@@ -36,7 +36,7 @@ function Header() {
   }, []);
 
   return (
-    <header id="header" ref={headerRef} className={styles.header}>
+    <header id="header" ref={headerRef} className={`container ${styles.header}`}>
       <div className={styles.nav_wrapper}>
         <div className={styles.logo_wrapper}>
           <Icon name={ICON_NAME.GSC_LOGO} className={styles.gsc_logo} />
