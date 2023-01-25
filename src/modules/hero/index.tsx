@@ -59,7 +59,7 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   function preorderButtonClickHandler() {}
 
   return (
-    <section>
+    <section className={styles.section}>
       <h1 className="hidden">{heroSectionHeading}</h1>
       <div className={styles.outer_wrapper}>
         <div className={`container ${styles.hero_wrapper}`} onMouseMove={mouseMoveHandler}>
@@ -80,20 +80,21 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
             />
           </div>
         </div>
-        <div className={`${styles.hero_footer}`}>
-          <div>
-            <strong className={`container ${styles.available_date}`}>
-              {availableText} {availableDate}
-            </strong>
 
-            <div className={`container ${styles.distributors_wrapper}`}>
-              <p className={styles.text}>{footerText}</p>
-              <Distributors items={distributorList} />
-            </div>
+        {isDesktop ? <ParalaxBg /> : null}
+      </div>
+      {!isDesktop ? <MobileBg /> : null}
+      <div className={styles.hero_footer}>
+        <div>
+          <strong className={`container ${styles.available_date}`}>
+            {availableText} {availableDate}
+          </strong>
+
+          <div className={`container ${styles.distributors_wrapper}`}>
+            <p className={styles.text}>{footerText}</p>
+            <Distributors items={distributorList} />
           </div>
         </div>
-
-        {isDesktop ? <ParalaxBg /> : <MobileBg />}
       </div>
     </section>
   );

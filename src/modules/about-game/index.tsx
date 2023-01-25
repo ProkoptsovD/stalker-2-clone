@@ -7,8 +7,11 @@ import Divider from '../common/components/divider';
 import img from '../../assets/images/webp/hero.webp';
 import GameVideoTeaser from './components/game-video-teaser';
 import GameFeatures from './components/game-features';
+import Carousel from '../common/components/carousel';
+import ReviewCard from '../common/components/ review-card';
 
 import { gameFeatures } from './constants/game-features.const';
+import { reviews } from './constants/reviews.const';
 
 function AboutGame() {
   return (
@@ -22,6 +25,12 @@ function AboutGame() {
         <GameFeatures features={gameFeatures} />
 
         <img src={dividerImg} className={styles.divider} alt={dividerAlt} />
+
+        <Carousel>
+          {reviews.map((review, index) => (
+            <ReviewCard key={index} {...review} />
+          ))}
+        </Carousel>
       </div>
     </section>
   );

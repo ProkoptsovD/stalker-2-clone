@@ -1,6 +1,5 @@
 :root {
-  /* depends on hero footer element size */
-  --section-padding-top: 120px;
+  --section-padding-top: 1rem;
 }
 
 .about_section {
