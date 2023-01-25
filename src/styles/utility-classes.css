@@ -7,3 +7,21 @@
     padding-inline: 1.25rem;
   }
 }
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  visibility: hidden;
+  top: 99999px;
+  left: 99999px;
+}
+
+.title {
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-625);
+  line-height: 1.17;
+  text-align: center;
+}

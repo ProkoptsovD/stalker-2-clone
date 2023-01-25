@@ -13,7 +13,8 @@ h5,
 h6,
 ul,
 ol,
-p {
+p,
+figure {
   margin: 0;
   padding: 0;
 }

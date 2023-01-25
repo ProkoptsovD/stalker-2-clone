@@ -19,6 +19,8 @@ function Button({
   variant = 'primary',
   as = 'a',
   className = '',
+  disabled,
+  type,
   ...restProps
 }: ButtonProps) {
   const variantClassName = classNames[variant];
@@ -36,7 +38,9 @@ function Button({
 
   return as === 'a' ? (
     <a
-      className={`${styles.button} ${variantClassName} ${className}`}
+      className={`${styles.button} ${variantClassName} ${
+        disabled ? styles.disabled : ''
+      } ${className}`}
       href={href ?? ''}
       onClick={handleClick}
       {...restProps}
@@ -52,6 +56,8 @@ function Button({
     <button
       className={`${styles.button} ${variantClassName} ${className}`}
       onClick={handleClick}
+      disabled={disabled}
+      type={type ?? 'button'}
       {...restProps}
     >
       <Icon name={iconBefore} className={`${styles.before}`} />
@@ -75,4 +81,6 @@ export type ButtonProps = {
   as: 'button' | 'a';
   onClick?: (params: unknown) => void;
   className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 };

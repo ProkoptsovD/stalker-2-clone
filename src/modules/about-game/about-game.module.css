@@ -1,0 +1,21 @@
+:root {
+  --section-padding-top: 1rem;
+}
+
+.about_section {
+  padding-top: var(--section-padding-top);
+  background-image: url('../../assets/images/webp/sm-bg.webp');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 100%;
+}
+
+.divider {
+  margin-inline: auto;
+  margin-top: 1.75rem;
+}
+
+.carousel {
+  padding-top: 2.5rem;
+  margin-bottom: 4.5rem;
+}

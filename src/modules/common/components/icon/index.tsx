@@ -12,6 +12,6 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(({ name, ...restProps }, ref) 
 
 export default Icon;
 
-interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
+export interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
   name: ICON_NAME;
 }

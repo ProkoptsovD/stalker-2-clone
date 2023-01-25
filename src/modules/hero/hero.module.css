@@ -1,3 +1,9 @@
+.section {
+  position: relative;
+
+  background-color: var(--clr-dark-400);
+}
+
 .hero_wrapper {
   position: relative;
   flex-direction: column;
@@ -17,8 +23,11 @@
 }
 
 .outer_wrapper {
-  position: relative;
+  position: absolute;
+  inset: 0;
   height: 42.625rem;
+
+  z-index: 2;
 }
 
 .logo {
@@ -67,10 +76,8 @@
 }
 
 .hero_footer {
-  position: absolute;
-  bottom: -114px;
-  left: 0;
-  width: 100%;
+  position: relative;
+  top: -1.5rem;
   z-index: 2;
 }
 
@@ -96,7 +103,6 @@
 
 .distributors_wrapper {
   padding-top: 1rem;
-  padding-bottom: 1.5rem;
 
   background-color: var(--clr-dark-400);
 }

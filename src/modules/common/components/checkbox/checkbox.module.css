@@ -3,7 +3,8 @@
 }
 
 .wrapper {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: auto;
 }

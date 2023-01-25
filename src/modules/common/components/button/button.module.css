@@ -8,7 +8,7 @@
   align-items: center;
 
   height: var(--btn-height);
-  width: fit-content;
+  width: 100%;
 
   background-color: transparent;
   font-family: var(--f-ff-500);
@@ -17,6 +17,10 @@
   text-decoration: none;
   color: var(--clr-dark-400);
   padding: 0;
+}
+
+.button:disabled {
+  cursor: initial;
 }
 
 .button:visited {
@@ -31,21 +35,6 @@
 .button.primary:hover .content_part:before {
   filter: drop-shadow(var(--shdw-400));
   left: -1px;
-}
-
-.content_part::before {
-  --size: 0.685rem;
-  --delta: 0rem;
-
-  content: '';
-  left: calc(var(--size) * -1);
-  border-left: var(--size) solid var(--clr-primary-400);
-  position: absolute;
-  border-top: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
-  border-bottom: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
-
-  transition: left 200ms;
-  z-index: 2;
 }
 
 .button.inverse .content_part::before {
@@ -65,7 +54,9 @@
 }
 
 .button:not(.primary) .before {
-  width: 0.89rem;
+  width: 1rem;
+  position: relative;
+  right: -1px;
 }
 
 .after {
@@ -85,9 +76,25 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   padding-left: 1rem;
   text-transform: uppercase;
   background-color: var(--clr-primary-300);
+}
+
+.content_part::before {
+  --size: 0.685rem;
+  --delta: 0rem;
+
+  content: '';
+  left: calc(var(--size) * -1);
+  border-left: var(--size) solid var(--clr-primary-400);
+  position: absolute;
+  border-top: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
+  border-bottom: calc(var(--size) + var(--size) - var(--delta)) solid transparent;
+
+  transition: left 200ms;
+  z-index: 2;
 }
 
 .button.inverse .content_part {
@@ -120,4 +127,9 @@
 .button.inverse .main_icon {
   color: var(--clr-primary-300);
   fill: var(--clr-primary-300);
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: initial;
 }

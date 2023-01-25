@@ -1,0 +1,22 @@
+.video_wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.video {
+  mask: url('../../../../assets/images/webp/video-mask.webp');
+  -webkit-mask: url('../../../../assets/images/webp/video-mask.webp') top right 100%;
+
+  margin-bottom: 1.25rem;
+}
+
+.video img {
+  height: 156px; /* temp */
+}
+
+.descr {
+  text-align: left;
+  font-weight: var(--f-fw-500);
+  font-size: 1rem;
+  tab-size: 4;
+  line-height: 1.5;
+}
