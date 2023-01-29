@@ -8,7 +8,7 @@ import img from '../../assets/images/webp/hero.webp';
 import GameVideoTeaser from './components/game-video-teaser';
 import GameFeatures from './components/game-features';
 import Carousel from '../common/components/carousel';
-import ReviewCard from '../common/components/ review-card';
+import ReviewCard from '../common/components/review-card';
 
 import { gameFeatures } from './constants/game-features.const';
 import { reviews } from './constants/reviews.const';
@@ -34,9 +34,9 @@ function AboutGame() {
             <ReviewCard key={index} {...review} />
           ))}
         </Carousel>
-
-        <Newsletter onFormSubmit={formSubmitHandler} />
       </div>
+
+      <Newsletter onFormSubmit={formSubmitHandler} className="container" />
     </section>
   );
 }

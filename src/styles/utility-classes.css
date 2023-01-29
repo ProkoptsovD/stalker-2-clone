@@ -19,6 +19,7 @@
 }
 
 .title {
+  text-transform: uppercase;
   font-family: var(--f-ff-500);
   font-weight: var(--f-fw-500);
   font-size: var(--f-fs-625);
