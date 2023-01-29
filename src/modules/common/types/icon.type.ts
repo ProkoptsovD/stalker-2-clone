@@ -52,5 +52,11 @@ export enum ICON_NAME {
   EMAIL_02 = 'icon-email-02',
   PLUS_02 = 'icon-plus-02',
   EXCLAMATION = 'icon-exclamation-01',
-  EPIC_GAMES_LOGO = 'icon-logo-epic-games-01'
+  EPIC_GAMES_LOGO = 'icon-logo-epic-games-01',
+  XS_SERIES = 'icon-xs-series',
+  FACEBOOK_ALT = 'icon-facebook-02',
+  FACEBOOK = 'icon-facebook-01',
+  ARROW_LEFT = 'icon-arrow-left-01',
+  X_CLOSE = 'icon-x-close-01',
+  LOGO_GOG_02 = 'icon-logo-gog-02'
 }
