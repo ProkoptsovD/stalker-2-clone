@@ -1,5 +1,6 @@
 :root {
   --btn-height: 2.625rem;
+  --btn-primary-before-width: calc(var(--btn-height) * 1.5);
 }
 
 .button {
@@ -29,7 +30,7 @@
 
 .button.primary:hover .main_icon {
   filter: drop-shadow(var(--shdw-500));
-  left: 1.725rem;
+  left: -19%;
 }
 
 .button.primary:hover .content_part:before {
@@ -59,15 +60,30 @@
   right: -1px;
 }
 
+.button.primary .before {
+  width: var(--btn-primary-before-width);
+  position: relative;
+  right: -1px;
+}
+
 .after {
   width: 1rem;
   height: var(--btn-height);
   transform: translateX(-1px);
 }
 
-.button.inverse .after {
+.button.primary .after {
+  width: 2rem;
+  position: relative;
+  right: 4px;
+}
+
+.button.inverse .after,
+.button.button.inverse .before {
   fill: var(--clr-dark-600);
   color: var(--clr-dark-600);
+  width: 1.2rem;
+  right: 0;
 }
 
 .content_part {
@@ -77,9 +93,14 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding-left: 1rem;
+
   text-transform: uppercase;
   background-color: var(--clr-primary-300);
+}
+
+.button.primary .content_part {
+  width: 100%;
+  padding-left: 0rem;
 }
 
 .content_part::before {
@@ -102,26 +123,25 @@
   color: var(--clr-primary-300);
 }
 
-.button:not(.primary) .content_part {
-  padding-left: 2rem;
-}
-
 .main_icon {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--btn-height) / 1.75);
   width: calc(var(--btn-height) / 1.75);
   height: calc(var(--btn-height) / 1.75);
 
   aspect-ratio: 1 / 1;
+}
 
-  transform: translate(calc(var(--btn-height) / 3 * -1), -50%);
+.button.primary .main_icon {
+  position: absolute;
+  top: 50%;
+  left: -23%;
+
+  transform: translateY(-50%);
   transition: left 200ms;
   z-index: 3;
 }
 
 .button:not(.primary) .main_icon {
-  transform: translate(calc(var(--btn-height) / 4 * -1), -50%);
+  margin-right: 0.5rem;
 }
 
 .button.inverse .main_icon {

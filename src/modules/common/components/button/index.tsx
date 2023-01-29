@@ -46,9 +46,11 @@ function Button({
       {...restProps}
     >
       <Icon name={iconBefore} className={`${styles.before}`} />
-      <Icon name={mainIcon} className={`${styles.main_icon}`} />
 
-      <span className={`${styles.content_part}`}>{content}</span>
+      <span className={styles.content_part}>
+        <Icon name={mainIcon} className={styles.main_icon} />
+        {content}
+      </span>
 
       <Icon name={iconAfter} className={styles.after} />
     </a>
@@ -61,9 +63,11 @@ function Button({
       {...restProps}
     >
       <Icon name={iconBefore} className={`${styles.before}`} />
-      <Icon name={mainIcon} className={`${styles.main_icon}`} />
 
-      <span className={`${styles.content_part}`}>{content}</span>
+      <span className={styles.content_part}>
+        <Icon name={mainIcon} className={styles.main_icon} />
+        {content}
+      </span>
 
       <Icon name={iconAfter} className={styles.after} />
     </button>
