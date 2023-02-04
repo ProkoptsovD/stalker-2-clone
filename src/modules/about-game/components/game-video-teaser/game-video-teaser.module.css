@@ -4,6 +4,9 @@
 
 .video {
   mask: url('../../../../assets/images/webp/video-mask.webp');
+  mask-position: top right;
+  mask-size: 100%;
+
   -webkit-mask: url('../../../../assets/images/webp/video-mask.webp') top right 100%;
 
   margin-bottom: 1.25rem;

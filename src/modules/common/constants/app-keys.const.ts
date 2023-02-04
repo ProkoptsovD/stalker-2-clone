@@ -4,5 +4,9 @@ export const CLIENT_ROUTER_KEYS = {
   PHYSICAL: '/preorder/physical',
   TERMS_OF_USE: '/terms',
   PRIVACY_POLICY: '/privacy-policy',
-  FAQ: '/faq'
+  FAQ: '/faq',
+  GAME_THE_ZONE: '/game/the-zone',
+  GAME_THE_STORY: '/game/the-story',
+  GAME_THE_DANGER: '/game/the-danger',
+  GAME_THE_ACTION: '/game/the-action'
 };

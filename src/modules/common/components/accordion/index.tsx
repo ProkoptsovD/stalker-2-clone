@@ -1,7 +1,13 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { MutableRefObject } from 'react';
 import styles from './accordion.module.css';
 
-function Accordion({ className = '', children, onAccordionExtend }: AccordionProps) {
+function Accordion({
+  className = '',
+  children,
+  onAccordionExtend,
+  onAccordionShrink
+}: AccordionProps) {
   const accordionRef = React.useRef<HTMLDivElement | null>(null);
 
   function expandButtonClickHandler(event: React.MouseEvent<HTMLButtonElement>) {
@@ -12,6 +18,8 @@ function Accordion({ className = '', children, onAccordionExtend }: AccordionPro
       if (isAccordionExpanded) {
         accordionRef.current.style.maxHeight = '10.5rem';
         accordionRef.current.setAttribute('aria-expanded', 'false');
+
+        if (onAccordionShrink) onAccordionShrink(accordionRef);
       } else {
         const { children } = accordionRef.current;
         const totalHeight = [...children].reduce(
@@ -20,12 +28,12 @@ function Accordion({ className = '', children, onAccordionExtend }: AccordionPro
         );
         accordionRef.current.style.maxHeight = `${totalHeight}px`;
         accordionRef.current.setAttribute('aria-expanded', 'true');
+
+        if (onAccordionExtend) onAccordionExtend(accordionRef);
       }
     }
 
     button.classList.toggle(styles.expanded);
-
-    if (onAccordionExtend) onAccordionExtend();
   }
 
   return (
@@ -35,7 +43,7 @@ function Accordion({ className = '', children, onAccordionExtend }: AccordionPro
         aria-expanded="false"
         aria-label="accordion"
         aria-labelledby="expandbutton"
-        className={[styles.accordion, className].join(' ')}
+        className={classNames(styles.accordion, className)}
       >
         {children}
       </div>
@@ -52,7 +60,9 @@ function Accordion({ className = '', children, onAccordionExtend }: AccordionPro
 export default Accordion;
 
 export interface AccordionProps {
-  onAccordionExtend?: () => void;
+  onAccordionExtend?: (ref: MutableRefObject<HTMLDivElement | null>) => void;
+  onAccordionShrink?: (ref: MutableRefObject<HTMLDivElement | null>) => void;
   children: React.ReactNode;
   className?: string;
+  wrapperClassName?: string;
 }

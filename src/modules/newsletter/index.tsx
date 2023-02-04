@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 
 import Button from '../common/components/button';
@@ -46,7 +47,7 @@ function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
   }
 
   return (
-    <div className={[styles.newsletter, className].join(' ')}>
+    <div className={classNames(styles.newsletter, className)}>
       <h3 className={styles.headline}>{newsletterHeadline}</h3>
 
       <Divider variant="hr-line" className={styles.divider} />

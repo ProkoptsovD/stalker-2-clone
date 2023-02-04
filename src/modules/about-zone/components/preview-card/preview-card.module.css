@@ -1,0 +1,7 @@
+.preview {
+  mask: url('../../../../assets/images/webp/video-mask.webp');
+  mask-position: left top;
+  mask-size: 99.78% 99.78%;
+
+  -webkit-mask: url('../../../../assets/images/webp/video-mask.webp') top left/99.78% 99.78%;
+}
