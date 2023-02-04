@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 
 import Button from '../common/components/button';
@@ -25,7 +26,7 @@ const defaultFormData = {
   agreeWithTermsAndConditions: false
 };
 
-function Newsletter({ onFormSubmit }: NewsletterProps) {
+function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
   const [formData, setFormData] = React.useState<SubscriptionFormData>(defaultFormData);
 
   const isDisabled = Object.values(formData).some((value) => !value);
@@ -46,7 +47,7 @@ function Newsletter({ onFormSubmit }: NewsletterProps) {
   }
 
   return (
-    <div className={styles.newsletter}>
+    <div className={classNames(styles.newsletter, className)}>
       <h3 className={styles.headline}>{newsletterHeadline}</h3>
 
       <Divider variant="hr-line" className={styles.divider} />
@@ -103,6 +104,7 @@ function TermAndConditionsText() {
 
 export interface NewsletterProps {
   onFormSubmit: (formData: SubscriptionFormData) => void;
+  className?: string;
 }
 
 export type SubscriptionFormData = {

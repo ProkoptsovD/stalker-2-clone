@@ -1,5 +1,5 @@
 html {
-  overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -20,5 +20,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   font-feature-settings: normal;
-  tab-size: 4;
+  /* tab-size: 4; */
 }

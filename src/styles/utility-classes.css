@@ -1,4 +1,6 @@
 .container {
+  max-width: 91vw;
+  margin: 0 auto;
   padding-inline: 0.875rem;
 }
 
@@ -12,16 +14,24 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  opacity: 0;
-  visibility: hidden;
-  top: 99999px;
-  left: 99999px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .title {
+  text-transform: uppercase;
   font-family: var(--f-ff-500);
   font-weight: var(--f-fw-500);
   font-size: var(--f-fs-625);
   line-height: 1.17;
   text-align: center;
+}
+
+@media screen and (min-width: 1240px) {
+  .title {
+    font-size: var(--f-fs-900);
+  }
 }
