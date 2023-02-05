@@ -1,24 +1,16 @@
 import React from 'react';
 import Slider, { Settings } from 'react-slick';
+import classNames from 'classnames';
 
 import styles from './carousel.module.css';
 
-const defaultConfig: Settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  arrows: false,
-  dotsClass: 'dot'
-};
+import { defaultConfig } from './config';
 
 function Carousel({ className = '', children, config = {} }: CarouselProps) {
   const settings = { ...defaultConfig, ...config };
 
   return (
-    <article className={`${styles.carousel} ${className}`}>
+    <article className={classNames(styles.carousel, className)}>
       <Slider {...settings}>{children}</Slider>
     </article>
   );

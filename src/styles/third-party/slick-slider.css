@@ -1,3 +1,5 @@
+/* class for dots in carousel */
+
 .dot {
   display: flex !important;
   align-items: center;
@@ -24,4 +26,14 @@
 
 .dot li.slick-active {
   background-color: var(--clr-primary-400);
+}
+
+/* class for dots in custom slider */
+.slider .slick-slider {
+  display: flex;
+  flex-direction: column;
+}
+
+.slick-slider .slick-active .header-element {
+  color: var(--clr-primary-400);
 }

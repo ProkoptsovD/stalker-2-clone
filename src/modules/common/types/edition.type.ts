@@ -24,3 +24,8 @@ export type Edition = {
   bgPoster: string;
   featuresAccessLimit: number;
 };
+
+export type EditionListType = {
+  digital: Edition[];
+  physical: Edition[];
+};
