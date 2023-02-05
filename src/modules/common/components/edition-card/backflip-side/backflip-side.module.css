@@ -27,29 +27,6 @@
   text-transform: capitalize;
 }
 
-.tooltip_body {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: max-content;
-  height: max-content;
-  border: 2px solid var(--clr-primary-400);
-  background-color: var(--clr-dark-400);
-  list-style: initial;
-  padding-left: 2rem;
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
-  padding-right: 0.65rem;
-
-  opacity: 0;
-  visibility: hidden;
-
-  z-index: 2;
-
-  transition: opacity var(--tr-speed-300) var(--tr-func-400),
-    visibility var(--tr-speed-300) var(--tr-func-400);
-}
-
 .icon,
 .tooltip {
   aspect-ratio: 1 / 1;
@@ -70,7 +47,7 @@
   cursor: pointer;
 }
 
-.tooltip:hover + .tooltip_body {
+.tooltip:hover + ul {
   opacity: 1;
   visibility: visible;
 }
