@@ -67,11 +67,11 @@
   transition: all var(--tr-speed-300) var(--tr-func-400);
 }
 
-li:first-child {
+.tablist li:first-child {
   margin-right: 0.25rem;
 }
 
-li:last-child {
+.tablist li:last-child {
   margin-left: 0.25rem;
 }
 
