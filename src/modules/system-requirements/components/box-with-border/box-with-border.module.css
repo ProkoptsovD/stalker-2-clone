@@ -1,0 +1,38 @@
+.inner_content_holder {
+  background-color: var(--clr-system-requirements-bg);
+}
+
+.title {
+  padding-left: 0.625rem;
+
+  font-family: var(--f-ff-500);
+  font-size: var(--f-fs-400);
+  text-transform: uppercase;
+  line-height: 1.33;
+}
+
+@media screen and (min-width: 640px) {
+  .title {
+    padding-left: 1.5rem;
+    font-size: var(--f-fs-550);
+  }
+}
+
+.content_holder {
+  border-image: url('../../../../assets/icons/system-requirements-border.svg') 21 21 stretch;
+  border-style: solid;
+  border-width: 0.75rem;
+
+  backdrop-filter: blur(4px);
+}
+
+@media screen and (min-width: 768px) {
+  .content_holder {
+    border-image: url('../../../../assets/icons/system-requirements-border.svg') 15 15 stretch;
+    padding: 0.65rem;
+  }
+}
+
+.semicolumn::after {
+  content: ':';
+}

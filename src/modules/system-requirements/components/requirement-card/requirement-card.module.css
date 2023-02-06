@@ -1,0 +1,161 @@
+/* ====== base text card styles ====== */
+
+.list {
+  width: 100%;
+  height: 100%;
+
+  color: var(--clr-primary-300);
+}
+
+.list .requirement {
+  display: grid;
+  grid-template-columns: 6.125rem auto;
+
+  gap: 1.5rem;
+}
+
+.list .requirement:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+.requirement_name,
+.requirement_value {
+  font-size: var(--f-fs-425);
+  line-height: 1.33;
+}
+
+.requirement_name {
+  font-weight: var(--f-fw-500);
+  text-align: right;
+}
+
+.requirement_value {
+  font-weight: var(--f-fw-300);
+  color: var(--clr-dark-300);
+}
+
+/* ====== card with icon styles ====== */
+.icon_card {
+  width: 2rem;
+  height: 2rem;
+
+  fill: var(--clr-primary-300);
+}
+
+.icon_card_text {
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-425);
+
+  color: var(--clr-primary-300);
+}
+
+.icon_card_list {
+  align-items: center;
+}
+.icon_card_list:last-child {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+
+  gap: 0.625rem;
+}
+
+.icon_card_list:last-child .icon_card_text {
+  text-transform: uppercase;
+}
+.icon_card_list:last-child .icon_card {
+  width: 5rem;
+  height: 6.125rem;
+}
+.icon_card_list:last-child .icon_card_text::after {
+  content: ':';
+}
+
+.icon_card_list:nth-child(n-2) {
+  margin-right: 2rem;
+}
+
+.icon_card_list {
+  grid-template-columns: min-content auto !important;
+}
+
+.icon_card_list > :last-child {
+  display: block;
+}
+
+/* ======== list card styles ======== */
+
+.list_card_ul > :not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.list_card {
+  display: block !important;
+
+  text-align: left;
+}
+
+.list_card_ul > :first-child :where(ul) {
+  display: grid;
+  grid-template-columns: max-content auto;
+  list-style: initial;
+}
+
+.list_card_ul > :last-child :where(ul) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: initial;
+}
+
+@media screen and (min-width: 768px) {
+  .list_card_ul > :last-child :where(ul) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.list_card :where(ul > :not(:last-child)) {
+  margin-bottom: 0.5rem;
+}
+
+.list_card :where(ul > :nth-child(n-2)),
+.list_card :where(ul > :nth-child(n-1)) {
+  margin-bottom: 0;
+}
+
+.list_card :where(ul > li) {
+  font-family: var(--f-ff-500);
+  color: var(--clr-primary-300);
+  margin-left: 1.25rem;
+}
+
+.list_card :where(ul > :nth-child(odd)) {
+  margin-right: 1.25rem;
+}
+
+.list_card :where(ul > li *) {
+  color: var(--clr-primary-300);
+  font-size: var(--f-fs-350);
+}
+
+.list_card li::marker {
+  color: var(--clr-dark-300);
+}
+
+.list_card :where(ul > :not(:last-child)) {
+  margin-bottom: 0.5rem;
+}
+
+.list_card_left_side {
+  display: flex;
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-550);
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  margin-bottom: 1.5rem;
+}
+
+.list_card_left_side:not(:last-child) {
+  margin-bottom: 1.5rem;
+}

@@ -3,6 +3,7 @@ import AboutZone from '../about-zone';
 import Editions from '../editions';
 import Header from '../header';
 import Hero from '../hero';
+import SystemRequirements from '../system-requirements';
 
 function HomePage() {
   return (
@@ -12,6 +13,7 @@ function HomePage() {
       <AboutGame />
       <AboutZone />
       <Editions />
+      <SystemRequirements />
     </>
   );
 }
