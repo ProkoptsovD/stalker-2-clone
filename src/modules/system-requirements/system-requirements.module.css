@@ -23,6 +23,7 @@
 
 .container {
   max-width: initial !important;
+  padding-inline: 0.875rem !important;
 }
 
 .headline {

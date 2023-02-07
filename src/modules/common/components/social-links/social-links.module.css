@@ -1,0 +1,61 @@
+.wrapper {
+  margin-inline: auto;
+}
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    background-image: url('../../../../assets/images/png/social-bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 32%;
+  }
+}
+
+.link {
+  display: block;
+  cursor: pointer;
+
+  transition: transform var(--tr-speed-100) var(--tr-func-600);
+}
+
+.link:hover {
+  transform: scale(1.2);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+
+  aspect-ratio: 1 / 1;
+}
+
+@media screen and (min-width: 640px) {
+  .list {
+    width: 66.666667%;
+    margin-inline: auto;
+  }
+
+  .icon {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .list {
+    width: 58.333333%;
+  }
+  .icon {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+}
