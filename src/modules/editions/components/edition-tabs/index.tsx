@@ -26,8 +26,6 @@ function EditionTabs<T>({
     setActiveTab(index);
   }
 
-  console.log(activeTab);
-
   return (
     <ul className={classNames(styles.tablist, className)} {...restProps}>
       <li

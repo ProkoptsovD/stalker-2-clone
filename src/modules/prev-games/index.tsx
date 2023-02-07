@@ -9,6 +9,8 @@ import {
   statistics
 } from './constants/prev-games.const';
 import { dividerAlt } from '../about-game/constants/about-game.const';
+import { socialLinks } from '../common/constants/social-links.const';
+import { ICON_NAME } from '../common/types/icon.type';
 
 import Divider from '../common/components/divider';
 import Button from '../common/components/button';
@@ -16,9 +18,6 @@ import SocialLinks from '../common/components/social-links';
 
 import dividerImg from '../../assets/images/webp/line-transparent.webp';
 import styles from './prev-games.module.css';
-
-import { socialLinks } from '../common/constants/social-links.const';
-import { ICON_NAME } from '../common/types/icon.type';
 
 function PrevGames() {
   return (
@@ -64,7 +63,7 @@ function PrevGames() {
           ))}
         </ul>
 
-        <SocialLinks links={socialLinks} className={classNames(styles.socials)} />
+        <SocialLinks links={socialLinks} withBgImage className={classNames(styles.socials)} />
 
         <Button
           className={classNames(styles.join_brotherhood)}

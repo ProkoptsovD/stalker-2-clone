@@ -7,12 +7,18 @@ import styles from './social-links.module.css';
 
 import type { SocialLink } from '../../types/social-links.type';
 
-function SocialLinks({ className, links }: SocialLinksProps) {
+function SocialLinks({ className, links, withBgImage = false, iconStyles }: SocialLinksProps) {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-    <div className={classNames(styles.wrapper)}>
-      <ul className={classNames(styles.list, className)}>
+    <div
+      className={classNames({
+        [styles.wrapper]: true,
+        [styles.bg]: withBgImage,
+        [className as string]: !!className
+      })}
+    >
+      <ul className={classNames(styles.list)}>
         {links.map(({ mainIcon, alternativeIcon, url }, index) => (
           <li key={index}>
             <a
@@ -22,8 +28,8 @@ function SocialLinks({ className, links }: SocialLinksProps) {
               rel="noopener noreferer"
             >
               <Icon
-                name={isDesktop ? mainIcon : alternativeIcon}
-                className={classNames(styles.icon)}
+                name={isDesktop && withBgImage ? mainIcon : alternativeIcon}
+                className={classNames(styles.icon, iconStyles)}
               />
             </a>
           </li>
@@ -38,4 +44,6 @@ export default SocialLinks;
 export type SocialLinksProps = {
   className?: string;
   links: SocialLink[];
+  withBgImage?: boolean;
+  iconStyles?: string;
 };
