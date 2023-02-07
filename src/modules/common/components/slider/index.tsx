@@ -14,23 +14,44 @@ export class SliderComponent<H, B> extends React.Component<
   SliderComponentProps<H, B>,
   SliderState
 > {
+  PADDING_INCREMENT = 3.71287129;
   sliderHeader: any;
   sliderBody: any;
+  updateCenterPadding: () => void;
 
   constructor(props: SliderComponentProps<H, B>) {
     super(props);
 
     this.state = {
-      nav1: undefined,
-      nav2: undefined
+      sliderHeaderRef: undefined,
+      sliderBodyRef: undefined,
+      prevWindowSize: window.innerWidth,
+      paddingSize: window.innerWidth / this.PADDING_INCREMENT
     };
+
+    this.updateCenterPadding = this.onWindowResize.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.setState({
-      nav1: this.sliderHeader,
-      nav2: this.sliderBody
+      sliderHeaderRef: this.sliderHeader,
+      sliderBodyRef: this.sliderBody
     });
+
+    window.addEventListener('resize', this.updateCenterPadding);
+  }
+
+  componentWillUnmount(): void {
+    window.removeEventListener('resize', this.updateCenterPadding);
+  }
+
+  onWindowResize() {
+    const screenWidth = window.innerWidth;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      paddingSize: screenWidth / this.PADDING_INCREMENT
+    }));
   }
 
   render() {
@@ -48,7 +69,7 @@ export class SliderComponent<H, B> extends React.Component<
 
     function renderItem(CustomRenderItem?: (item: H | B) => JSX.Element) {
       return function (itemElem: H | B, index: number) {
-        const Element = () =>
+        const Component = () =>
           CustomRenderItem ? (
             CustomRenderItem(itemElem)
           ) : (
@@ -57,7 +78,7 @@ export class SliderComponent<H, B> extends React.Component<
             </p>
           );
 
-        return <Element key={index} />;
+        return <Component key={index} />;
       };
     }
 
@@ -72,9 +93,9 @@ export class SliderComponent<H, B> extends React.Component<
           ) : null}
 
           <Slider
-            asNavFor={this.state.nav2}
+            asNavFor={this.state.sliderBodyRef}
             ref={(slider) => (this.sliderHeader = slider)}
-            {...headerSliderConfig}
+            {...{ ...headerSliderConfig, centerPadding: `${this.state.paddingSize}px` }}
           >
             {headerItems?.map(renderItem(RenderHeaderItem))}
           </Slider>
@@ -82,7 +103,7 @@ export class SliderComponent<H, B> extends React.Component<
 
         <div className={classNames(styles.slider_element, bodyStyle)}>
           <Slider
-            asNavFor={this.state.nav1}
+            asNavFor={this.state.sliderHeaderRef}
             ref={(slider) => (this.sliderBody = slider)}
             {...bodySliderConfig}
           >

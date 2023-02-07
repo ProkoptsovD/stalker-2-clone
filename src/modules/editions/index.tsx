@@ -14,6 +14,8 @@ import { ICON_NAME } from '../common/types/icon.type';
 import {
   editionsSectionHeadline,
   editionsSectionSubHeadline,
+  editionsTypes,
+  editionVaraints,
   preorderBonuses
 } from './constants/editions.const';
 
@@ -42,10 +44,10 @@ function Editions({ className }: EditionsProps) {
 
       <Divider className={classNames(styles.divider)} variant="radiation" />
 
-      <EditionTabs items={['D.I.G.I.T.A.L.', 'P.H.Y.S.I.C.A.L.']} />
+      <EditionTabs items={editionsTypes} />
 
       <Slider
-        headerItems={['standard edition', 'deluxe edition', 'ultimate edition']}
+        headerItems={editionVaraints}
         bodyItems={['1', '2', '3']}
         RenderBodyItem={(el) => {
           return <p className={styles.test}>{el}</p>;

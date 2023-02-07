@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import { languageList } from '../common/constants/languages.const';
 import { ICON_NAME } from '../common/types/icon.type';
@@ -21,7 +22,7 @@ function Header() {
   const headerRef = React.useRef<HTMLElement | null>(null);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
-  const { updateScroll } = useSticky('header', styles.scrolled);
+  const { updateScroll } = useSticky(headerRef, styles.scrolled);
 
   useCustomCursor({ elemRef: headerRef, classWithCursorStyles: 'cursor' });
 
@@ -36,15 +37,15 @@ function Header() {
   }, []);
 
   return (
-    <header id="header" ref={headerRef} className={`container ${styles.header}`}>
-      <div className={styles.nav_wrapper}>
-        <div className={styles.logo_wrapper}>
-          <Icon name={ICON_NAME.GSC_LOGO} className={styles.gsc_logo} />
+    <header ref={headerRef} className={classNames(styles.header)}>
+      <div className={classNames(styles.nav_wrapper)}>
+        <div className={classNames(styles.logo_wrapper)}>
+          <Icon name={ICON_NAME.GSC_LOGO} className={classNames(styles.gsc_logo)} />
         </div>
 
         {isDesktop ? (
           <>
-            <img className={styles.game_logo} src={stalkerLogoImg} alt={logoAltText} />
+            <img className={classNames(styles.game_logo)} src={stalkerLogoImg} alt={logoAltText} />
             <ReleaseDate />
             <Navbar navLinks={navLinkList} />
           </>
@@ -54,10 +55,10 @@ function Header() {
       <LangSwitcher
         languages={languageList}
         onLanguageChange={(lang) => console.log(lang)}
-        className={styles.lang_switcher}
+        className={classNames(styles.lang_switcher)}
       />
 
-      <Hamburger className={styles.hamburger} />
+      <Hamburger className={classNames(styles.hamburger)} />
     </header>
   );
 }
