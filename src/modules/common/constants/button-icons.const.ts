@@ -12,11 +12,16 @@ export const BEFORE_AFTER_ICONS = {
   inverse: {
     before: ICON_NAME.GREY_BEFORE,
     after: ICON_NAME.GREY_AFTER
+  },
+  white: {
+    before: ICON_NAME.WHITE_BEFORE,
+    after: ICON_NAME.WHITE_AFTER
   }
 };
 
 export const MAIN_ICON = {
   primary: ICON_NAME.CART,
   secondary: ICON_NAME.EMAIL_02,
-  inverse: ICON_NAME.STEAM
+  inverse: ICON_NAME.STEAM,
+  white: ICON_NAME.STEAM
 };

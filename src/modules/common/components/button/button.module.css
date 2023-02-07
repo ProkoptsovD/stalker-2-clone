@@ -28,9 +28,13 @@
   color: var(--clr-dark-400);
 }
 
+.button.button.primary {
+  width: fit-content;
+}
+
 .button.primary:hover .main_icon {
   filter: drop-shadow(var(--shdw-500));
-  left: -19%;
+  left: -27px;
 }
 
 .button.primary:hover .content_part:before {
@@ -63,7 +67,7 @@
 .button.primary .before {
   width: var(--btn-primary-before-width);
   position: relative;
-  right: -1px;
+  right: -2px;
 }
 
 .after {
@@ -133,7 +137,7 @@
 .button.primary .main_icon {
   position: absolute;
   top: 50%;
-  left: -23%;
+  left: -32px;
 
   transform: translateY(-50%);
   transition: left 200ms;

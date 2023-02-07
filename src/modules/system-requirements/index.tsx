@@ -19,7 +19,7 @@ function SystemRequirements() {
   return (
     <section className={classNames(styles.system_requirements_section)}>
       <div className={classNames('container', styles.container)}>
-        <h2 className={classNames('title', styles.hedline)}>{headlineText}</h2>
+        <h2 className={classNames('title', styles.headline)}>{headlineText}</h2>
         <Divider className={classNames(styles.divider)} variant="radiation" />
 
         <div className={classNames(styles.requirements_wrapper)}>

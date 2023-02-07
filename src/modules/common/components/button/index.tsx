@@ -7,7 +7,8 @@ import styles from './button.module.css';
 const classNames = {
   primary: styles.primary,
   secondary: styles.secondary,
-  inverse: styles.inverse
+  inverse: styles.inverse,
+  white: styles.white
 };
 
 function Button({
@@ -28,7 +29,7 @@ function Button({
 
   const iconBefore = BEFORE_AFTER_ICONS[key].before;
   const iconAfter = BEFORE_AFTER_ICONS[key].after;
-  const mainIcon = MAIN_ICON[key];
+  const mainIcon = iconName ?? MAIN_ICON[key];
 
   function handleClick(event: React.MouseEvent<any>) {
     if (preventDefault) event.preventDefault();
@@ -81,7 +82,7 @@ export type ButtonProps = {
   iconName?: ICON_NAME;
   preventDefault?: boolean;
   href?: string;
-  variant: 'primary' | 'secondary' | 'inverse';
+  variant: 'primary' | 'secondary' | 'inverse' | 'white';
   as: 'button' | 'a';
   onClick?: (params: unknown) => void;
   className?: string;
