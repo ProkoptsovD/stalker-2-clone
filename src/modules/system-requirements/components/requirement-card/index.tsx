@@ -42,9 +42,6 @@ export function RequirementTextCard({
               <p className={classNames(styles.requirement_value, rightSideStyle)}>{text}</p>
             );
 
-          console.log('isArray', isArray);
-          console.log('hasJoinSign', hasJoinSign);
-
           return (
             <li key={displayText} className={classNames(styles.requirement, containerStyle)}>
               <NameComponent />
