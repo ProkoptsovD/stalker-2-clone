@@ -1,13 +1,20 @@
+import classNames from 'classnames';
+
 import { ICON_NAME } from '../../types/icon.type';
+
 import Icon from '../icon';
 import styles from './distributors.module.css';
 
 function Distributors({ className = '', items }: DistributorsProps) {
+  const lastIcon = items.length - 1;
+
   return (
-    <ul className={`${styles.list} ${className}`}>
-      {items.map((distibutor) => (
+    <ul className={classNames(styles.list, className)}>
+      {items.map((distibutor, idx) => (
         <li key={distibutor}>
           <Icon name={distibutor} className={styles.icon} />
+
+          {idx === lastIcon ? <Icon name={ICON_NAME.XS_SERIES} className={styles.icon} /> : null}
         </li>
       ))}
     </ul>
