@@ -1,0 +1,39 @@
+.humburger_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-mobile-humburger-menu-bg);
+}
+
+.link_list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.link_list_item {
+  text-align: center;
+}
+
+.link_list_item a {
+  font-family: var(--f-fw-500);
+  font-weight: var(--f-fw-100);
+  font-size: var(--f-fs-400);
+  text-transform: uppercase;
+  opacity: 0.7;
+  color: var(--cler-primary-300);
+}
+
+.link_list_item a:visited {
+  color: inherit;
+}
+
+.link_list_item a::after {
+  content: '.';
+}
