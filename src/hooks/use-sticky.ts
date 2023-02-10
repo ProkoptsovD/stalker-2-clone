@@ -1,20 +1,19 @@
 import React from 'react';
 
-export function useSticky(selector: string, className: string) {
+export function useSticky<T extends HTMLElement | null>(
+  elemRef: React.MutableRefObject<T>,
+  className: string
+) {
   const prevScrollPos = React.useRef<number>(window.pageYOffset);
 
   const updateScroll = (currentScrollPos: number): void => {
-    const elemRef = document.querySelector(selector);
+    if (!elemRef.current) return;
 
-    if (!elemRef) return;
-
-    if (prevScrollPos.current > currentScrollPos) {
-      elemRef.classList.remove(className);
+    if (prevScrollPos.current >= currentScrollPos) {
+      elemRef.current.classList.remove(className);
     } else {
-      elemRef.classList.add(className);
+      elemRef.current.classList.add(className);
     }
-
-    prevScrollPos.current = currentScrollPos;
   };
 
   return {

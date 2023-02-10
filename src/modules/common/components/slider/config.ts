@@ -15,7 +15,6 @@ export const headerSliderConfig: Settings = {
   ...sharedConfig,
   dots: false,
   centerMode: true,
-  centerPadding: '122px',
   touchThreshold: 50
 } as const;
 

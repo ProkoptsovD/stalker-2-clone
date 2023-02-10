@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.6.1",
     "classnames": "^2.3.2",
     "gsap": "^3.11.4",
     "pixi.js": "^7.0.5",

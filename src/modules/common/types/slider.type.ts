@@ -1,10 +1,13 @@
 import Slider from 'react-slick';
-import type { CarouselProps } from '../components/carousel';
+
 import { ICON_NAME } from './icon.type';
+import type { CarouselProps } from '../components/carousel';
 
 export type SliderState = {
-  nav1: Slider | undefined;
-  nav2: Slider | undefined;
+  sliderHeaderRef: Slider | undefined;
+  sliderBodyRef: Slider | undefined;
+  prevWindowSize: number;
+  paddingSize: number;
 };
 
 export interface SliderComponentProps<H, B> extends CarouselProps {
