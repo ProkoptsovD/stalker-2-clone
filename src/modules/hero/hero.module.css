@@ -103,6 +103,7 @@
 }
 
 .distributors_wrapper {
+  width: 100%;
   padding-top: 1rem;
 
   background-color: var(--clr-dark-400);
@@ -110,4 +111,9 @@
 
 .distributors {
   background-color: var(--clr-dark-400);
+}
+
+.hero_footer .distributors_wrapper,
+.hero_footer .available_date {
+  max-width: 100%;
 }
