@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import styles from './input.module.css';
 
 function Input({
@@ -8,14 +10,14 @@ function Input({
   ...inputProps
 }: InputProps) {
   return (
-    <div className={`${styles.wrapper} ${wrapperClassName ?? ''}`}>
+    <div className={classNames(styles.wrapper, wrapperClassName)}>
       {label ? (
-        <label htmlFor={label} className={`${styles.label} ${labelClassName ?? ''}`}>
+        <label htmlFor={label} className={classNames(styles.label, labelClassName)}>
           {label}
         </label>
       ) : null}
 
-      <input id={label} className={`${styles.input} ${inputClassName ?? ''}`} {...inputProps} />
+      <input id={label} className={classNames(styles.input, inputClassName)} {...inputProps} />
     </div>
   );
 }

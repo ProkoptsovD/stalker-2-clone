@@ -19,11 +19,17 @@ import {
 } from './constants/newsletter.const';
 
 import styles from './newsletter.module.css';
+import { validateEmail } from './validation/email';
 
 const defaultFormData = {
   email: '',
   agreeToRecieveNews: false,
   agreeWithTermsAndConditions: false
+};
+const errors = {
+  email: null,
+  agreeToRecieveNews: null,
+  agreeWithTermsAndConditions: null
 };
 
 function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
@@ -46,21 +52,31 @@ function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
     onFormSubmit(formData);
   }
 
+  function validateEmailOnBlur() {
+    if (!formData.email) return;
+
+    const isValidEmail = validateEmail(formData.email);
+  }
+
   return (
     <div className={classNames(styles.newsletter, className)}>
-      <h3 className={styles.headline}>{newsletterHeadline}</h3>
+      <div className={classNames(styles.text_content)}>
+        <h3 className={styles.headline}>{newsletterHeadline}</h3>
 
-      <Divider variant="hr-line" className={styles.divider} />
+        <Divider variant="hr-line" className={styles.divider} />
 
-      <p className={styles.text}>{newsletterText}</p>
+        <p className={styles.text}>{newsletterText}</p>
+      </div>
 
       <form className={styles.form} onSubmit={formSubmitHandler}>
         <Input
           name="email"
+          type="email"
           placeholder={newsletterInputPlaceholder}
           wrapperClassName={styles.input}
           value={formData.email}
           onChange={inputValueChangeHandler}
+          onBlur={validateEmailOnBlur}
         />
         <Checkbox
           name="agreeToRecieveNews"
@@ -95,9 +111,9 @@ function TermAndConditionsText() {
   return (
     <p className={styles.agreement}>
       {privacyAgreementPhrasePartOne}&nbsp;
-      <a className={styles.agreement_link}>{termsAndConditions}&nbsp;</a>
-      {privacyAgreementPhrasePartTwo}
-      <a className={styles.agreement_link}>&nbsp; {privacyPolicy}</a>
+      <a className={styles.agreement_link}>{termsAndConditions}</a>
+      &nbsp;{privacyAgreementPhrasePartTwo}&nbsp;
+      <a className={styles.agreement_link}>{privacyPolicy}</a>
     </p>
   );
 }

@@ -1,16 +1,17 @@
+import classNames from 'classnames';
+
 import styles from './game-video-teaser.module.css';
 
-function GameVideoTeaser({ url, descriptionText, onClick }: GameVideoTeaserProps) {
+function GameVideoTeaser({ url, className, videoStyles, onClick }: GameVideoTeaserProps) {
   function clickHandler() {
     if (onClick) onClick();
   }
 
   return (
-    <figure className={styles.video_wrapper}>
-      <div className={styles.video}>
+    <figure className={classNames(styles.video_wrapper, className)}>
+      <div className={classNames(styles.video, videoStyles)}>
         <video onClick={clickHandler} src={url} muted autoPlay playsInline />
       </div>
-      <figcaption className={styles.descr}>{descriptionText}</figcaption>
     </figure>
   );
 }
@@ -19,6 +20,7 @@ export default GameVideoTeaser;
 
 export type GameVideoTeaserProps = {
   url: string;
-  descriptionText: string;
   onClick?: () => void;
+  className?: string;
+  videoStyles?: string;
 };

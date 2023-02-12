@@ -23,7 +23,7 @@ function Editions({ className }: EditionsProps) {
   const { ref, inView } = useInView({ threshold: 0.3 });
 
   return (
-    <section ref={ref} className={classNames(styles.editions, className)}>
+    <section id="editions" ref={ref} className={classNames(styles.editions, className)}>
       <h2 className={classNames('title', styles.title)}>{editionsSectionHeadline}</h2>
 
       <div className={styles.preorder_bonus}>

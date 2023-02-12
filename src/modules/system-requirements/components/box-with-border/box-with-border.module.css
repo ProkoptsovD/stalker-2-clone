@@ -1,4 +1,10 @@
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
 .inner_content_holder {
+  padding: 1.5rem;
   background-color: var(--clr-system-requirements-bg);
 }
 
@@ -29,7 +35,10 @@
 @media screen and (min-width: 768px) {
   .content_holder {
     border-image: url('../../../../assets/icons/system-requirements-border.svg') 15 15 stretch;
-    padding: 0.65rem;
+  }
+
+  .inner_content_holder {
+    padding: 1rem;
   }
 }
 

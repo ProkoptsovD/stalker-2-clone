@@ -52,24 +52,6 @@
 .icon_card_list {
   align-items: center;
 }
-.icon_card_list:last-child {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-
-  gap: 0.625rem;
-}
-
-.icon_card_list:last-child .icon_card_text {
-  text-transform: uppercase;
-}
-.icon_card_list:last-child .icon_card {
-  width: 5rem;
-  height: 6.125rem;
-}
-.icon_card_list:last-child .icon_card_text::after {
-  content: ':';
-}
 
 .icon_card_list:nth-child(n-2) {
   margin-right: 2rem;
@@ -158,4 +140,14 @@
 
 .list_card_left_side:not(:last-child) {
   margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .list_card ul > :not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .list .requirement_value {
+    font-size: var(--f-fs-400);
+  }
 }

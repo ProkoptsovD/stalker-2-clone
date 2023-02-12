@@ -1,18 +1,39 @@
-:root {
-  --section-padding-top: 1rem;
-}
-
 .about_section {
-  padding-top: var(--section-padding-top);
-  background-image: url('../../assets/images/webp/sm-bg.webp');
+  padding-top: 2rem;
+  background-image: url('../../assets/images/webp/about-game-sm-bg.webp');
   background-repeat: no-repeat;
-  background-position: 50% 0;
+  background-position: top;
   background-size: 100%;
+
+  position: relative;
+  top: -1rem;
 }
 
 .divider {
   margin-inline: auto;
   margin-top: 1.75rem;
+}
+
+@media screen and (min-width: 640px) {
+  .about_section {
+    background-image: url('../../assets/images/webp/about-game-lg-bg.webp');
+    top: -3.5rem;
+    padding-top: 3rem;
+    background-size: 100% 80%;
+  }
+
+  .about_section .rad_divider {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about_section {
+    background-image: url('../../assets/images/webp/about-game-xl-bg.webp');
+    background-size: 100%;
+    top: -2px;
+    z-index: 3;
+  }
 }
 
 .carousel {
@@ -22,4 +43,52 @@
 
 .iframe {
   height: 24rem;
+}
+
+.about_section .video_teaser {
+  max-width: 640px;
+  max-height: 360px;
+
+  margin-inline: auto;
+  cursor: pointer;
+}
+
+.descr {
+  text-align: left;
+  font-weight: var(--f-fw-500);
+  font-size: 1rem;
+  tab-size: 4;
+  line-height: 1.5;
+
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 1280px) {
+  .flex {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    gap: 2.5rem;
+  }
+
+  .flex > :first-child {
+    width: calc(50% - 1.25rem);
+    margin-bottom: 0;
+  }
+  .flex > :last-child {
+    width: calc(50% - 1.25rem);
+  }
+
+  .descr {
+    margin-bottom: 1.5rem;
+    width: 105%;
+  }
+  .features {
+    line-height: 1.5;
+  }
+
+  .iframe {
+    height: 34rem;
+  }
 }

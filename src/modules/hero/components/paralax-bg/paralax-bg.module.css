@@ -6,12 +6,11 @@
 
 .cloud {
   background-image: url('../../../../assets/images/webp/clouds.webp');
-  background-position: 50% 100%;
+  background-position: 50% 102%;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  width: 108%;
-  right: -7%;
+  width: 101%;
   top: 0;
   bottom: 0;
 
@@ -28,8 +27,8 @@
   max-width: 54%;
   max-height: 100%;
   position: absolute;
-  right: 1.2%;
-  top: 3.8%;
+  right: 1.5%;
+  top: 1%;
 
   transform: translate3d(var(--sun-x-slide), 0px, 0px);
 }

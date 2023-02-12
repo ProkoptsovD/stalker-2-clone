@@ -1,0 +1,33 @@
+.wrapper {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.title {
+  display: block;
+  margin-bottom: 0.5rem;
+
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-550);
+  line-height: 1;
+  text-transform: uppercase;
+
+  color: var(--clr-primary-400);
+}
+
+.title,
+.text {
+  text-align: center;
+}
+
+.text {
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-400);
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: var(--f-fs-700);
+  }
+}

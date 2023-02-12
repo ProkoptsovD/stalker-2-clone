@@ -14,13 +14,14 @@ export function RequirementTextCard({
   rightSideStyle,
   listStyle,
   appendSemicolumn,
+  children,
   LeftSideComponent,
   RightSideComponent
 }: RequirementCardProps) {
   return (
     <article className={classNames(className)}>
       <ul className={classNames(styles.list, listStyle)}>
-        {requirement.map((req) => {
+        {requirement.map((req, index) => {
           const { displayText, value, joinWith } = req;
 
           const hasJoinSign = Boolean(joinWith);
@@ -28,7 +29,7 @@ export function RequirementTextCard({
 
           const NameComponent = () =>
             LeftSideComponent ? (
-              LeftSideComponent(req)
+              LeftSideComponent(req, index)
             ) : (
               <strong className={classNames(styles.requirement_name, leftSideStyle)}>
                 {appendSemicolumn ? displayText + ':' : displayText}
@@ -37,7 +38,7 @@ export function RequirementTextCard({
 
           const ValueComponent = ({ text }: { text: string }) =>
             RightSideComponent ? (
-              RightSideComponent(req)
+              RightSideComponent(req, index)
             ) : (
               <p className={classNames(styles.requirement_value, rightSideStyle)}>{text}</p>
             );
@@ -63,6 +64,7 @@ export function RequirementTextCard({
           );
         })}
       </ul>
+      {children}
     </article>
   );
 }
@@ -71,14 +73,16 @@ export function RequirementIconCard(props: RequirementCardProps) {
   return (
     <RequirementTextCard
       containerStyle={classNames(styles.icon_card_list)}
-      LeftSideComponent={(item) => (
+      LeftSideComponent={(item, index) => (
         <Icon name={item.value as ICON_NAME} className={classNames(styles.icon_card)} />
       )}
       RightSideComponent={({ displayText }) => (
         <p className={classNames(styles.requirement_value, styles.icon_card_text)}>{displayText}</p>
       )}
       {...props}
-    />
+    >
+      {props?.children}
+    </RequirementTextCard>
   );
 }
 
@@ -101,6 +105,7 @@ export type RequirementCardProps = {
   rightSideStyle?: string;
   listStyle?: string;
   appendSemicolumn?: boolean;
-  LeftSideComponent?: (item: Requirement) => JSX.Element;
-  RightSideComponent?: (item: Requirement) => JSX.Element;
+  children?: React.ReactNode;
+  LeftSideComponent?: (item: Requirement, index: number) => JSX.Element;
+  RightSideComponent?: (item: Requirement, index: number) => JSX.Element;
 };

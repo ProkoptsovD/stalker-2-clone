@@ -61,6 +61,10 @@
   color: inherit;
 }
 
+.link::after {
+  content: '.';
+}
+
 .active {
   opacity: 1;
 }
