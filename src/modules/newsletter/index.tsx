@@ -55,6 +55,7 @@ function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
   function validateEmailOnBlur() {
     if (!formData.email) return;
 
+    // TODO make validations checkings and error alert
     const isValidEmail = validateEmail(formData.email);
   }
 
@@ -77,6 +78,7 @@ function Newsletter({ onFormSubmit, className = '' }: NewsletterProps) {
           value={formData.email}
           onChange={inputValueChangeHandler}
           onBlur={validateEmailOnBlur}
+          inputClassName={styles.main_input}
         />
         <Checkbox
           name="agreeToRecieveNews"
