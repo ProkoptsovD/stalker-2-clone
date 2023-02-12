@@ -74,6 +74,10 @@
   .ligal_rights {
     text-align: left;
   }
+
+  .inner_wrapper {
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -98,18 +102,19 @@
     gap: 2rem;
   }
   .socials {
-    margin: 0;
+    margin: 0 8rem 0 0;
     width: 16.666667%;
   }
 
   .inner_wrapper {
     flex-direction: row;
     gap: 1.25rem;
-    width: 75%;
+    width: 100%;
+    justify-content: left;
   }
 
   .socials ul {
-    gap: 0.5rem;
+    gap: 1.25rem;
   }
 }
 
@@ -122,10 +127,17 @@
 
 .sub_navigation_item:not(:last-child)::after {
   content: '|';
-  margin-inline: 0.5rem;
+  margin-inline: 0.95rem;
 }
 
 .navlink {
   font-weight: var(--f-fw-500);
   color: var(--clr-primary-300);
+}
+
+@media screen and (min-width: 768px) {
+  .sub_navigation {
+    font-size: var(--f-fs-350);
+    line-height: 1.25rem;
+  }
 }

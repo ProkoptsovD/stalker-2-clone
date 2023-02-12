@@ -28,7 +28,6 @@ function Modal({
 
   React.useEffect(() => {
     function escapeKeyDownHandler(event: KeyboardEvent) {
-      console.log(event);
       if (event.key !== 'Escape') return;
 
       onClose();

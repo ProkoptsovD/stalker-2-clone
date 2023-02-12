@@ -29,6 +29,7 @@
   position: absolute;
   top: -22px;
   right: 1.125rem;
+  cursor: pointer;
 }
 
 .close:focus {

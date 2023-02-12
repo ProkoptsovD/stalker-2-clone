@@ -25,3 +25,6 @@ export const footerText =
   'Preorder is available via Steam, Epic Games Store, Microsoft Store, GOG as well as on Xbox Series X and Xbox Series S.';
 
 export const heroSectionHeading = 'Main part of website with game logo';
+
+export const addToWishlistHref =
+  'https://store.steampowered.com/app/1643320/STALKER_2_Heart_of_Chornobyl/?utm_source=S2website&utm_medium=wishlist&utm_campaign=1scroll';

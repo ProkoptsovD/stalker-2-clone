@@ -1,8 +1,8 @@
 import { ICON_NAME } from '../../../common/types/icon.type';
+import { availableDate, availableText } from '../../../common/constants/release-date.const';
 
 import Icon from '../../../common/components/icon';
 import styles from './release-date.module.css';
-import { availableDate, availableText } from '../../../common/constants/release-date.const';
 
 function ReleaseDate() {
   return (

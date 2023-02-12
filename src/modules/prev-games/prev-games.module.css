@@ -68,6 +68,16 @@
     gap: 0;
   }
 }
+@media screen and (min-width: 1280px) {
+  .flex {
+    gap: 1rem;
+    width: 66.666667%;
+    margin-inline: auto;
+  }
+  .link img {
+    height: 160px;
+  }
+}
 
 .link {
   display: block;
@@ -158,6 +168,10 @@
   .regular_text {
     width: 11rem;
     margin-inline: auto;
+  }
+
+  .stats {
+    margin-bottom: 5rem;
   }
 }
 

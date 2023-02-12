@@ -21,11 +21,6 @@
   }
 }
 
-.container {
-  max-width: initial !important;
-  padding-inline: 0.875rem !important;
-}
-
 .headline {
   margin-bottom: 0.625rem;
 }
@@ -34,16 +29,125 @@
   margin-bottom: 1rem;
 }
 
-@media screen and (min-width: 640px) {
-  .divider {
-    margin-bottom: 2.5rem;
-  }
-}
-
 .requirements_wrapper {
   display: flex;
   justify-items: center;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2.5rem;
+}
+
+.requirements_wrapper .column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.distributors {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.icon_card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.icon_card_svg {
+  width: 5rem;
+  height: 6.125rem;
+}
+
+.icon_card_text {
+  margin-top: 1.25rem;
+  font-size: var(--f-fs-425);
+  text-transform: uppercase;
+}
+
+.icon_card_text::after {
+  content: ':';
+}
+
+@media screen and (max-width: 639px) {
+  .box_left {
+    padding: 0.25rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .divider {
+    margin-bottom: 2.5rem;
+  }
+
+  .distributors {
+    height: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .box_right {
+    padding: 0.65rem 0.25rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .distributors {
+    width: 70%;
+    margin-inline: auto;
+  }
+  .icon_card_wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .icon_card_text {
+    margin-top: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .box {
+    width: 100%;
+  }
+
+  .distributors {
+    width: 64%;
+    height: 3rem;
+    transform: scale(0.5);
+  }
+
+  .requirements_wrapper {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .column {
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .left .box > div,
+  .right .box > div {
+    padding: 0;
+  }
+
+  .left .box > div > div {
+    padding: 4rem 2.85rem;
+  }
+
+  .left > :first-child {
+    margin-bottom: 2.25rem;
+  }
+
+  .right .box > div > div {
+    padding: 1.65rem 2.85rem;
+  }
+
+  .right > :last-child {
+    margin-top: 1.25rem;
+    flex-grow: 2;
+  }
+
+  .right > :last-child > div {
+    height: 100%;
+  }
 }

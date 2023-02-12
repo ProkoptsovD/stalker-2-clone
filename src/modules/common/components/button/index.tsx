@@ -1,10 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import { BEFORE_AFTER_ICONS, MAIN_ICON } from '../../constants/button-icons.const';
 import { ICON_NAME } from '../../types/icon.type';
+
 import Icon from '../icon';
 import styles from './button.module.css';
 
-const classNames = {
+const classNamesMap = {
   primary: styles.primary,
   secondary: styles.secondary,
   inverse: styles.inverse,
@@ -16,7 +19,7 @@ function Button({
   iconName,
   onClick,
   href,
-  preventDefault = true,
+  preventDefault = false,
   variant = 'primary',
   as = 'a',
   className = '',
@@ -24,7 +27,7 @@ function Button({
   type,
   ...restProps
 }: ButtonProps) {
-  const variantClassName = classNames[variant];
+  const variantClassName = classNamesMap[variant];
   const key = variant as keyof typeof BEFORE_AFTER_ICONS;
 
   const iconBefore = BEFORE_AFTER_ICONS[key].before;
@@ -39,11 +42,16 @@ function Button({
 
   return as === 'a' ? (
     <a
-      className={`${styles.button} ${variantClassName} ${
-        disabled ? styles.disabled : ''
-      } ${className}`}
+      className={classNames({
+        [styles.button]: true,
+        [variantClassName]: true,
+        [styles.disabled]: disabled,
+        [className]: className
+      })}
       href={href ?? ''}
       onClick={handleClick}
+      target="_blank"
+      rel="noopener noreferer"
       {...restProps}
     >
       <Icon name={iconBefore} className={`${styles.before}`} />
@@ -57,13 +65,13 @@ function Button({
     </a>
   ) : (
     <button
-      className={`${styles.button} ${variantClassName} ${className}`}
+      className={classNames(styles.button, variantClassName, className)}
       onClick={handleClick}
       disabled={disabled}
       type={type ?? 'button'}
       {...restProps}
     >
-      <Icon name={iconBefore} className={`${styles.before}`} />
+      <Icon name={iconBefore} className={styles.before} />
 
       <span className={styles.content_part}>
         <Icon name={mainIcon} className={styles.main_icon} />
