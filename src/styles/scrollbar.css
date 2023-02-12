@@ -1,0 +1,23 @@
+@media screen and (min-width: 1240px) {
+  -webkit-scrollbar,
+  ::-webkit-scrollbar {
+    width: 1.25rem;
+    background-image: url('../assets/images/png/scrollbar/scrollbar-1.png');
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-image: url('../assets/images/png/scrollbar/scrollbar-2.png');
+  }
+
+  ::-webkit-scrollbar-track {
+    background-image: url('../assets/images/png/scrollbar/scrollbar-3.png');
+    margin: 2rem 0;
+  }
+
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-track {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+  }
+}
