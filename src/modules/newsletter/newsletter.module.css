@@ -96,8 +96,34 @@
 }
 
 @media screen and (min-width: 768px) {
+  .form {
+    position: relative;
+  }
   .subscribe_btn {
-    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    margin-top: 0;
+    width: 25%;
+  }
+  .subscribe_btn span::before {
+    display: none;
+  }
+  .subscribe_btn > :last-child,
+  .subscribe_btn > :first-child {
+    width: 1.5rem !important;
+  }
+
+  .subscribe_btn > :first-child {
+    right: -3px !important;
+  }
+
+  .subscribe_btn > :last-child {
+    transform: translateX(-4px);
+  }
+
+  .main_input {
+    padding-right: 25%;
   }
 }
 
@@ -120,7 +146,16 @@
     width: 69%;
     margin-top: 0;
   }
+
+  .subscribe_btn {
+    width: 35%;
+  }
+
+  .main_input {
+    padding-right: 35%;
+  }
 }
+
 @media screen and (min-width: 1280px) {
   .newsletter {
     width: 68.333333%;
