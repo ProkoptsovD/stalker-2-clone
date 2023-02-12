@@ -11,20 +11,20 @@
   gap: 0.25rem;
 }
 
+.dot li button,
 .dot li {
   width: 0.75rem;
   height: 0.25rem;
 
   border-radius: 30px;
+  font-size: 1px;
+  line-height: 0;
 
   background-color: #ffffff33;
+  color: transparent;
 }
 
-.dot li button {
-  display: none;
-}
-
-.dot li.slick-active {
+.dot li.slick-active button {
   background-color: var(--clr-primary-400);
 }
 
