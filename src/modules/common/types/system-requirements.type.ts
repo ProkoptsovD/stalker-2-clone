@@ -15,7 +15,7 @@ export type Requirements = BaseRequirement & {
   data: Requirement[];
 };
 
-export type SystemRequirements = Requirements[];
+export type SystemRequirementsType = Requirements[];
 
 export enum SYSTEM_REQUIREMENTS_NAMES {
   MINIMUM = 'minimum',

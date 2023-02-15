@@ -15,13 +15,16 @@ import YouTubeTeaser from './components/youtube-teaser';
 import ActivationEmailSent from '../newsletter/components/activation-email-sent/inedex';
 import Newsletter, { SubscriptionFormData } from '../newsletter';
 
-import { gameFeatures } from './constants/game-features.const';
-import { reviews } from './constants/reviews.const';
 import { aboutGameTitle, descriptionText, dividerAlt } from './constants/about-game.const';
+import { useApi } from '../../hooks/use-api.hook';
+import { reviews } from './constants/reviews.const';
+import { mockDataService } from '../common/services/mock.service';
 
 function AboutGame() {
   const [isModalWithTeaserOpened, setIsModalWithTeaserOpened] = React.useState<boolean>(false);
   const [isFormSubmited, setIsFormSubmited] = React.useState<boolean>(false);
+  const gameFeatures =
+    useApi<string[]>(mockDataService.getGameFeatures.bind(mockDataService)) ?? [];
 
   const activationEmailRef = React.useRef<HTMLDivElement | null>(null);
 

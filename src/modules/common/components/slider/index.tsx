@@ -10,16 +10,13 @@ import { ICON_NAME } from '../../types/icon.type';
 
 import type { SliderComponentProps, SliderState } from '../../types/slider.type';
 
-export class SliderComponent<H, B> extends React.Component<
-  SliderComponentProps<H, B>,
-  SliderState
-> {
+export class SliderComponent<H> extends React.Component<SliderComponentProps<H>, SliderState> {
   PADDING_INCREMENT = 3.71287129;
   sliderHeader: any;
   sliderBody: any;
   updateCenterPadding: () => void;
 
-  constructor(props: SliderComponentProps<H, B>) {
+  constructor(props: SliderComponentProps<H>) {
     super(props);
 
     this.state = {
@@ -57,29 +54,28 @@ export class SliderComponent<H, B> extends React.Component<
   render() {
     const {
       className,
+      children,
       headerStyle,
       bodyStyle,
       headerItems,
-      bodyItems,
       headerIcon = ICON_NAME.CHEVRON_DOWN,
       iconStyle,
-      RenderBodyItem,
+      headerConfig,
+      bodyConfig,
       RenderHeaderItem
     } = this.props;
 
-    function renderItem(CustomRenderItem?: (item: H | B) => JSX.Element) {
-      return function (itemElem: H | B, index: number) {
-        const Component = () =>
-          CustomRenderItem ? (
-            CustomRenderItem(itemElem)
-          ) : (
-            <p className={classNames('header-element', styles.default_header_item)}>
-              {itemElem as React.ReactNode}
-            </p>
-          );
+    function renderItem(item: H, index: number) {
+      const Component = () =>
+        RenderHeaderItem ? (
+          RenderHeaderItem(item)
+        ) : (
+          <p className={classNames('header-element', styles.default_header_item)}>
+            {item as React.ReactNode}
+          </p>
+        );
 
-        return <Component key={index} />;
-      };
+      return <Component key={index} />;
     }
 
     return (
@@ -95,9 +91,13 @@ export class SliderComponent<H, B> extends React.Component<
           <Slider
             asNavFor={this.state.sliderBodyRef}
             ref={(slider) => (this.sliderHeader = slider)}
-            {...{ ...headerSliderConfig, centerPadding: `${this.state.paddingSize}px` }}
+            {...{
+              ...headerSliderConfig,
+              centerPadding: `${this.state.paddingSize}px`,
+              ...headerConfig
+            }}
           >
-            {headerItems?.map(renderItem(RenderHeaderItem))}
+            {headerItems?.map(renderItem)}
           </Slider>
         </div>
 
@@ -105,9 +105,13 @@ export class SliderComponent<H, B> extends React.Component<
           <Slider
             asNavFor={this.state.sliderHeaderRef}
             ref={(slider) => (this.sliderBody = slider)}
-            {...bodySliderConfig}
+            {...{
+              ...bodySliderConfig,
+              centerPadding: `${this.state.paddingSize - 45}px`,
+              ...bodyConfig
+            }}
           >
-            {bodyItems?.map(renderItem(RenderBodyItem))}
+            {children}
           </Slider>
         </div>
       </article>

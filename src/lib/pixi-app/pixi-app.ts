@@ -45,6 +45,10 @@ export class PixiApp {
   }
 
   init() {
+    if (this.#app) {
+      this.#container.destroy(true);
+    }
+
     this.#app = new Application({ width: this.#width, height: this.#height });
 
     this.containerNode?.appendChild(this.#app.view as HTMLCanvasElement);
@@ -62,7 +66,12 @@ export class PixiApp {
     this.#addFilterToStage();
     this.#container.addChild(this.#targetImageSprite as Sprite);
 
-    this.#createMask({ x: this.#width, y: 0, width: this.#width, height: this.#height });
+    this.#createMask({
+      x: this.#width,
+      y: 0,
+      width: this.#width,
+      height: this.#height
+    });
     this.#initDemolitionEffectAnimation();
 
     return this;

@@ -1,16 +1,24 @@
 import React, { useEffect, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
+import classNames from 'classnames';
 
-import { Edition } from '../../types/edition.type';
-import { pixiApp } from '../../../../lib/pixi-app/pixi-app';
-import rippleTextureImage from '../../../../assets/images/png/pattern.png';
+import { PixiApp } from '../../../../lib/pixi-app/pixi-app';
 
-import styles from './edition-card.module.css';
-import { REVERSE_ANIMATION_SPEED } from '../../constants/edition-card.const';
-import BackflipSide from './backflip-side';
 import Icon from '../icon';
+import Button from '../button';
+import BackflipSide from './backflip-side';
+
+import useHasTouchScreen from '../../../../hooks/use-has-touch-screen';
+import rippleTextureImage from '../../../../assets/images/png/pattern.png';
+import styles from './edition-card.module.css';
+
+import type { Edition } from '../../types/edition.type';
+import { preorderButton } from '../../../header/constants/header.const';
 import { ICON_NAME } from '../../types/icon.type';
-import useIsMobileDevice from '../../../../hooks/use-is-mobile-device';
+import {
+  digitalEditionPreorderLinkMap,
+  getPreoderLink,
+  REVERSE_ANIMATION_SPEED
+} from '../../constants/edition-card.const';
 
 function EditionCard({
   version,
@@ -18,16 +26,18 @@ function EditionCard({
   poster,
   cost,
   features,
-  featuresAccessLimit
+  featuresAccessLimit,
+  className,
+  backFlipStyles
 }: EditionCardProps) {
   const articleRef = useRef<HTMLElement | null>(null);
   const separatorRef = useRef<SVGSVGElement | null>(null);
   const isFirstRender = useRef<boolean>(true);
+  const pixiApp = useRef<PixiApp>(new PixiApp());
 
-  const isMobileDevice = useIsMobileDevice();
-  const { ref, inView } = useInView({
-    threshold: 1
-  });
+  const hasTouchScreen = useHasTouchScreen();
+  const key = version as keyof typeof digitalEditionPreorderLinkMap;
+  const preorderlink = getPreoderLink(digitalEditionPreorderLinkMap[key] ?? 'sdad');
 
   useEffect(() => {
     if (articleRef.current && isFirstRender.current) {
@@ -36,7 +46,7 @@ function EditionCard({
       const { offsetWidth, offsetHeight } = articleRef.current;
 
       articleRef.current.style.backgroundImage = `url(${bgPoster})`;
-      pixiApp
+      pixiApp.current
         .setContainerNode(articleRef.current)
         .setAppSize({ width: offsetWidth, height: offsetHeight })
         .setImageContainTextureEffect(rippleTextureImage)
@@ -48,17 +58,12 @@ function EditionCard({
 
   function playAnimation(mode: 'forward' | 'backward') {
     if (mode === 'forward') {
-      pixiApp.demolitionEffect.play();
+      pixiApp.current.demolitionEffect.play();
       separatorRef.current?.classList.add(styles.separator_primary);
     } else {
-      pixiApp.demolitionEffect.reverse(REVERSE_ANIMATION_SPEED);
+      pixiApp.current.demolitionEffect.reverse(REVERSE_ANIMATION_SPEED);
       separatorRef.current?.classList.remove(styles.separator_primary);
     }
-  }
-
-  function setArticleRef(node: HTMLElement) {
-    articleRef.current = node;
-    ref(node);
   }
 
   function handleSwitchPosterBtnClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -69,20 +74,27 @@ function EditionCard({
     if (hasClass) {
       event.currentTarget.classList.remove(styles.spin_clockwise);
       event.currentTarget.classList.add(styles.spin_counterclockwise);
+      playAnimation('backward');
     } else {
       event.currentTarget.classList.remove(styles.spin_counterclockwise);
       event.currentTarget.classList.add(styles.spin_clockwise);
+      playAnimation('forward');
     }
   }
 
   return (
     <article
-      ref={setArticleRef}
-      className={styles.card}
+      ref={articleRef}
+      className={classNames(styles.card, className)}
       onMouseEnter={playAnimation.bind(pixiApp, 'forward')}
       onMouseLeave={playAnimation.bind(pixiApp, 'backward')}
     >
-      <div className={styles.card_content_wrapper}>
+      <div
+        className={classNames({
+          [styles.card_content_wrapper]: true,
+          [styles.relative]: hasTouchScreen
+        })}
+      >
         <h4 className={styles.card_title}>{version}</h4>
         <Icon
           name={ICON_NAME.LINE}
@@ -90,22 +102,35 @@ function EditionCard({
           className={styles.separator}
           role="separator"
         />
-        <BackflipSide items={features} itemsAccessLimit={featuresAccessLimit} />
-        <div className={styles.tooltip} />
+        <BackflipSide
+          items={features}
+          itemsAccessLimit={featuresAccessLimit}
+          className={backFlipStyles}
+        />
+      </div>
 
-        {true ? (
+      <div className={classNames(styles.card_footer)}>
+        {hasTouchScreen ? (
           <button
             type="button"
             onClick={handleSwitchPosterBtnClick}
-            className={`${styles.rotation_btn} ${styles.spin_on_render}`}
+            className={classNames(styles.rotation_btn, styles.spin_on_render)}
           >
             <Icon name={ICON_NAME.ROTATION} />
           </button>
         ) : null}
-      </div>
 
-      <div className={styles.card_footer}>
-        <strong className={styles.edition_cost}></strong>
+        <strong className={styles.edition_cost}>
+          {cost.currency}&nbsp;{cost.amount.toFixed(2)}
+        </strong>
+
+        <Button
+          as="a"
+          href={preorderlink}
+          variant="primary"
+          content={preorderButton}
+          className={classNames(styles.preorder_btn)}
+        />
       </div>
     </article>
   );
@@ -113,4 +138,7 @@ function EditionCard({
 
 export default EditionCard;
 
-interface EditionCardProps extends Edition {}
+interface EditionCardProps extends Edition {
+  className?: string;
+  backFlipStyles?: string;
+}

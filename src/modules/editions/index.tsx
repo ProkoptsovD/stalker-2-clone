@@ -7,6 +7,10 @@ import Divider from '../common/components/divider';
 import Tooltip from '../common/components/tooltip';
 import Slider from '../common/components/slider';
 import EditionTabs from './components/edition-tabs';
+import EditionCard from '../common/components/edition-card';
+
+import editionList from '../../__mocks__/editions.mock';
+import useHasTouchScreen from '../../hooks/use-has-touch-screen';
 
 import styles from './editions.module.css';
 
@@ -20,7 +24,11 @@ import {
 } from './constants/editions.const';
 
 function Editions({ className }: EditionsProps) {
+  const [activeTab, setActiveTab] = React.useState<number>(0);
   const { ref, inView } = useInView({ threshold: 0.3 });
+  const hasTouchScreen = useHasTouchScreen();
+
+  const isDigitalVisible = activeTab === 0;
 
   return (
     <section id="editions" ref={ref} className={classNames(styles.editions, className)}>
@@ -44,16 +52,61 @@ function Editions({ className }: EditionsProps) {
 
       <Divider className={classNames(styles.divider)} variant="radiation" />
 
-      <EditionTabs items={editionsTypes} />
+      <EditionTabs items={editionsTypes} defaultActiveTab={0} onTabChange={setActiveTab} />
 
-      <Slider
-        headerItems={editionVaraints}
-        bodyItems={['1', '2', '3']}
-        RenderBodyItem={(el) => {
-          return <p className={styles.test}>{el}</p>;
-        }}
-        headerStyle={classNames({ [styles.sticky]: inView, [styles.static]: !inView })}
-      />
+      {hasTouchScreen ? (
+        <>
+          <Slider
+            headerItems={editionVaraints}
+            headerStyle={classNames({
+              [styles.sticky]: inView,
+              [styles.static]: !inView,
+              [styles.hidden]: !isDigitalVisible
+            })}
+          >
+            {editionList.digital.map((edition, index) => (
+              <EditionCard key={index} {...edition} />
+            ))}
+          </Slider>
+          <Slider
+            headerItems={editionVaraints}
+            headerStyle={classNames({
+              [styles.sticky]: inView,
+              [styles.static]: !inView,
+              [styles.hidden]: isDigitalVisible
+            })}
+          >
+            {editionList.physical.map((edition, index) => (
+              <EditionCard key={index} backFlipStyles={styles.physical_backflip} {...edition} />
+            ))}
+          </Slider>
+        </>
+      ) : (
+        <>
+          <div
+            className={classNames({
+              container: true,
+              [styles.editions_wrapper]: true,
+              [styles.hidden]: !isDigitalVisible
+            })}
+          >
+            {editionList.digital.map((edition, index) => (
+              <EditionCard key={index} {...edition} />
+            ))}
+          </div>
+          <div
+            className={classNames({
+              container: true,
+              [styles.editions_wrapper]: true,
+              [styles.hidden]: isDigitalVisible
+            })}
+          >
+            {editionList.physical.map((edition, index) => (
+              <EditionCard key={index} backFlipStyles={styles.physical_backflip} {...edition} />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }

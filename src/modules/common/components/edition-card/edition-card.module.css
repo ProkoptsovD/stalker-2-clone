@@ -1,8 +1,8 @@
 :root {
   --padding-tablet: 2rem;
   --padding-mobile: 1.5rem;
-  --animation-duration: 800ms;
-  --animation-delay: 250ms;
+  --animation-duration: 400ms;
+  --animation-delay: 100ms;
   --animation-function: ease-in-out;
 }
 
@@ -10,11 +10,15 @@
   position: relative;
   max-width: 23.75rem;
   width: 100%;
+  min-width: 18.75rem;
   max-height: 42.625rem;
+  height: 100%;
   aspect-ratio: 1 / 1.795;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 105% 100%;
+  background-size: 105% 105%;
+
+  overflow: hidden;
 }
 
 .card_image {
@@ -24,12 +28,6 @@
 
 .card_content_wrapper {
   padding: var(--padding-mobile);
-}
-
-@media screen and (min-width: 760px) {
-  .card_content_wrapper {
-    padding: var(--padding-tablet);
-  }
 }
 
 .card_title {
@@ -45,15 +43,48 @@
 }
 
 .card_footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 15%;
+  z-index: 3;
+
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 760px) {
+  .card_content_wrapper {
+    padding: var(--padding-tablet);
+  }
+
+  .card_footer {
+    height: 18%;
+  }
 }
 
 .edition_cost {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-family: var(--f-ff-500);
+  font-weight: var(--f-fw-500);
+  font-size: var(--f-fs-550);
+  text-align: center;
+
+  color: var(--clr-primary-400);
+}
+
+.show_rotation .edition_cost {
+  margin-top: 2rem;
 }
 
 .canvas {
   position: absolute;
-  top: 0;
+  top: -5px;
   left: 0;
+  left: -9px;
+  width: 105%;
+  height: 102.3%;
 }
 
 .separator {
@@ -73,6 +104,10 @@
 }
 
 .rotation_btn {
+  position: absolute;
+  top: -4rem;
+  left: 45%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,16 +115,18 @@
   width: 2rem;
   height: 2rem;
 
-  margin: 0 auto;
   padding: 0;
 
   border: none;
   background-color: transparent;
+
+  transform: translateX(-50%);
 }
 
 .rotation_btn :where(svg) {
   width: 100%;
   height: 100%;
+  fill: var(--clr-dark-700);
 }
 
 .spin_on_render {
@@ -134,4 +171,15 @@
   100% {
     transform: rotate(180deg);
   }
+}
+
+.relative {
+  position: relative;
+}
+
+.preorder_btn {
+  display: flex;
+  margin: 0 auto;
+
+  font-weight: var(--f-fw-500);
 }

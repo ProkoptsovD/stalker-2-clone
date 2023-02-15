@@ -10,3 +10,7 @@ export const CLIENT_ROUTER_KEYS = {
   GAME_THE_DANGER: '/game/the-danger',
   GAME_THE_ACTION: '/game/the-action'
 };
+
+export const LOCAL_STORAGE_KEYS = {
+  TOKEN: 'token'
+};

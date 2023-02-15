@@ -1,10 +1,10 @@
 import { ICON_NAME } from '../modules/common/types/icon.type';
 import {
-  SystemRequirements,
+  SystemRequirementsType,
   SYSTEM_REQUIREMENTS_NAMES
 } from '../modules/common/types/system-requirements.type';
 
-export const systemRequirements: SystemRequirements = [
+const systemRequirements: SystemRequirementsType = [
   {
     requirement: SYSTEM_REQUIREMENTS_NAMES.MINIMUM,
     data: [
@@ -86,3 +86,5 @@ export const systemRequirements: SystemRequirements = [
     ]
   }
 ];
+
+export default systemRequirements;
