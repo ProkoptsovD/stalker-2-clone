@@ -9,16 +9,24 @@ import styles from './system-requirements.module.css';
 
 import { headlineText } from './constants/section-text.const';
 import { distributorList } from '../common/constants/distributors.const';
-import { systemRequirements } from '../../__mocks__/system-requirements.mock';
 import { ICON_NAME } from '../common/types/icon.type';
-import { SYSTEM_REQUIREMENTS_NAMES } from '../common/types/system-requirements.type';
+import {
+  SystemRequirementsType,
+  SYSTEM_REQUIREMENTS_NAMES
+} from '../common/types/system-requirements.type';
 import {
   RequirementIconCard,
   RequirementListCard,
   RequirementTextCard
 } from './components/requirement-card';
+import { useApi } from '../../hooks/use-api.hook';
+import { mockDataService } from '../common/services/mock.service';
 
 function SystemRequirements() {
+  const systemRequirements =
+    useApi<SystemRequirementsType>(mockDataService.getSystemRequirements.bind(mockDataService)) ??
+    [];
+
   return (
     <section className={classNames(styles.system_requirements_section)}>
       <div className={classNames('container')}>
@@ -87,7 +95,7 @@ function SystemRequirements() {
               const part1 = sysReqs.slice(0, half) as Array<() => JSX.Element>;
               const part2 = sysReqs.slice(half) as Array<() => JSX.Element>;
 
-              // make two column wrappers for flex layout
+              // makes two column wrappers for flex layout
               sysReqs = [
                 <div key={1} className={classNames(styles.column, styles.left)}>
                   {part1.map((El, idx) => (

@@ -11,7 +11,7 @@ function Tooltip<T>({ items, className, keyExtractor, RenderItem, id = '' }: Too
     RenderItem ? (
       RenderItem(item)
     ) : (
-      <p id={id} className={cssClasses}>
+      <p id={id} className={classNames(cssClasses, styles.no_list_style)}>
         {item as React.ReactNode}
       </p>
     );

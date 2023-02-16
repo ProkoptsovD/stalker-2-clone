@@ -11,9 +11,10 @@ function EditionTabs<T>({
   items,
   onTabChange,
   Component,
+  defaultActiveTab,
   ...restProps
 }: EditionTabsProps<T>) {
-  const [activeTab, setActiveTab] = React.useState<number>(0);
+  const [activeTab, setActiveTab] = React.useState<number>(defaultActiveTab);
 
   const shouldHideRightArrow = items.length - 1 === activeTab;
   const shouldHideLeftArrow = 0 === activeTab;
@@ -92,6 +93,7 @@ export default EditionTabs;
 
 export type EditionTabsProps<T> = {
   items: T[];
+  defaultActiveTab: number;
   Component?: (item: T) => JSX.Element;
   onTabChange?: (tabIndex: number) => void;
 } & React.HTMLAttributes<HTMLUListElement>;

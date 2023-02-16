@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  width: max-content;
+  width: fit-content;
   height: max-content;
   border: 2px solid var(--clr-primary-400);
   background-color: var(--clr-dark-400);
@@ -15,8 +15,12 @@
   fill: var(--clr-primary-300);
   color: var(--clr-primary-300);
 
-  z-index: 2;
+  z-index: 4;
 
   transition: opacity var(--tr-speed-300) var(--tr-func-400),
     visibility var(--tr-speed-300) var(--tr-func-400);
+}
+
+.no_list_style {
+  padding-left: 1rem;
 }

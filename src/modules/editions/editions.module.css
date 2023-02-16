@@ -8,6 +8,16 @@
   background-size: cover;
 }
 
+.editions_wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 3rem;
+
+  overflow: hidden;
+}
+
 @media screen and (min-width: 640px) {
   .editions {
     padding-top: 2.5rem;
@@ -17,10 +27,29 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .editions_wrapper {
+    gap: 1rem;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .editions {
     background-image: url('../../assets/images/webp/editions-xl-bg.webp');
   }
+}
+
+.backflip span,
+.physical_backflip span {
+  font-size: var(--f-fs-300);
+}
+
+.digital_backflip:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.physical_backflip:not(:last-child) {
+  margin-bottom: 0.125rem;
 }
 
 .title {
@@ -107,4 +136,12 @@
 
 .static {
   position: static;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+
+  position: absolute;
+  z-index: -100;
 }

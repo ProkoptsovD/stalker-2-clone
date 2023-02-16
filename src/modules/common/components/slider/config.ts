@@ -8,13 +8,13 @@ const sharedConfig: Settings = {
   autoplay: false,
   infinite: false,
   speed: 500,
-  arrows: false
+  arrows: false,
+  centerMode: true
 } as const;
 
 export const headerSliderConfig: Settings = {
   ...sharedConfig,
   dots: false,
-  centerMode: true,
   touchThreshold: 50
 } as const;
 

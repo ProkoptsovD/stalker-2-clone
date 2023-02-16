@@ -11,7 +11,7 @@ import phLimited from '../assets/images/png/retail-l-items.png';
 import phCollectors from '../assets/images/png/retail-c-items.png';
 import phUltimate from '../assets/images/png/retail-u-items.png';
 
-export const DigitalEditionFeatures: EditionFeature[] = [
+const digitalEditionFeatures: EditionFeature[] = [
   {
     feature: 'Preorder bonus',
     icon: ICON_NAME.PLUS,
@@ -68,7 +68,7 @@ export const DigitalEditionFeatures: EditionFeature[] = [
   }
 ];
 
-export const PhysicalEditionFeatures: EditionFeature[] = [
+const physicalEditionFeatures: EditionFeature[] = [
   {
     feature: 'Standard + PO bonus',
     icon: ICON_NAME.PLUS,
@@ -133,12 +133,12 @@ export const PhysicalEditionFeatures: EditionFeature[] = [
   }
 ];
 
-export const EditionList: EditionListType = {
+const editionList: EditionListType = {
   digital: [
     {
       version: 'standart edition',
       cost: { amount: 895, currency: '₴' },
-      features: DigitalEditionFeatures,
+      features: digitalEditionFeatures,
       bgPoster,
       poster: dStandart,
       featuresAccessLimit: 2
@@ -146,7 +146,7 @@ export const EditionList: EditionListType = {
     {
       version: 'deluxe edition',
       cost: { amount: 1199, currency: '₴' },
-      features: DigitalEditionFeatures,
+      features: digitalEditionFeatures,
       bgPoster,
       poster: dDeluxe,
       featuresAccessLimit: 7
@@ -154,7 +154,7 @@ export const EditionList: EditionListType = {
     {
       version: 'ultimate edition',
       cost: { amount: 1599, currency: '₴' },
-      features: DigitalEditionFeatures,
+      features: digitalEditionFeatures,
       bgPoster,
       poster: dUltimate,
       featuresAccessLimit: 0
@@ -164,34 +164,36 @@ export const EditionList: EditionListType = {
     {
       version: 'standart edition',
       cost: { amount: 59.99, currency: '$' },
-      features: PhysicalEditionFeatures,
+      features: physicalEditionFeatures,
       bgPoster,
       poster: phStandart,
-      featuresAccessLimit: 9
+      featuresAccessLimit: 5
     },
     {
       version: 'limited edition',
       cost: { amount: 79.99, currency: '$' },
-      features: PhysicalEditionFeatures,
+      features: physicalEditionFeatures,
       bgPoster,
       poster: phLimited,
-      featuresAccessLimit: 4
+      featuresAccessLimit: 10
     },
     {
-      version: "collectors's edition",
+      version: "collector's edition",
       cost: { amount: 179.99, currency: '$' },
-      features: PhysicalEditionFeatures,
+      features: physicalEditionFeatures,
       bgPoster,
       poster: phCollectors,
-      featuresAccessLimit: 2
+      featuresAccessLimit: 12
     },
     {
       version: 'ultimate edition',
       cost: { amount: 339.99, currency: '$' },
-      features: PhysicalEditionFeatures,
+      features: physicalEditionFeatures,
       bgPoster,
       poster: phUltimate,
       featuresAccessLimit: 0
     }
   ]
 };
+
+export default editionList;
