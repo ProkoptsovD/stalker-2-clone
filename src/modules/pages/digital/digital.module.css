@@ -1,0 +1,24 @@
+.slider_header {
+  /* reset default border */
+  border: none;
+
+  /* apply new ones */
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--clr-primary-300);
+  background-color: transparent;
+}
+
+.slider_header > svg {
+  /* reset default pointing icon styles */
+  all: unset;
+
+  /* apply the ones we need */
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  aspect-ratio: 1 / 1;
+  width: 1rem;
+  height: 1rem;
+
+  transform: translateY(-100%) rotateX(180deg);
+}

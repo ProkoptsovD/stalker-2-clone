@@ -11,6 +11,7 @@ import EditionCard from '../common/components/edition-card';
 
 import editionList from '../../__mocks__/editions.mock';
 import useHasTouchScreen from '../../hooks/use-has-touch-screen';
+import useMediaQuery from '../../hooks/use-media-query';
 
 import styles from './editions.module.css';
 
@@ -27,6 +28,7 @@ function Editions({ className }: EditionsProps) {
   const [activeTab, setActiveTab] = React.useState<number>(0);
   const { ref, inView } = useInView({ threshold: 0.3 });
   const hasTouchScreen = useHasTouchScreen();
+  const isMobileScreen = useMediaQuery('(max-width: 639px)');
 
   const isDigitalVisible = activeTab === 0;
 
@@ -58,51 +60,69 @@ function Editions({ className }: EditionsProps) {
         <>
           <Slider
             headerItems={editionVaraints}
+            className={classNames({ [styles.hidden]: !isDigitalVisible })}
             headerStyle={classNames({
               [styles.sticky]: inView,
-              [styles.static]: !inView,
-              [styles.hidden]: !isDigitalVisible
+              [styles.static]: !inView
             })}
+            bodyConfig={{ centerMode: !isMobileScreen }}
           >
-            {editionList.digital.map((edition, index) => (
-              <EditionCard key={index} {...edition} />
+            {editionList.digital.map(({ bgPoster, poster, ...edition }, index) => (
+              <EditionCard key={index} bgPoster={bgPoster[0]} poster={poster[0]} {...edition} />
             ))}
           </Slider>
           <Slider
             headerItems={editionVaraints}
             headerStyle={classNames({
               [styles.sticky]: inView,
-              [styles.static]: !inView,
-              [styles.hidden]: isDigitalVisible
+              [styles.static]: !inView
             })}
+            className={classNames({ [styles.hidden]: isDigitalVisible })}
           >
-            {editionList.physical.map((edition, index) => (
-              <EditionCard key={index} backFlipStyles={styles.physical_backflip} {...edition} />
+            {editionList.physical.map(({ bgPoster, poster, ...edition }, index) => (
+              <EditionCard
+                key={index}
+                backFlipStyles={styles.physical_backflip}
+                bgPoster={bgPoster[0]}
+                poster={poster[0]}
+                {...edition}
+              />
             ))}
           </Slider>
         </>
       ) : (
         <>
           <div
+            aria-hidden={!isDigitalVisible}
             className={classNames({
               container: true,
               [styles.editions_wrapper]: true,
+              [styles.space_between]: true,
               [styles.hidden]: !isDigitalVisible
             })}
           >
-            {editionList.digital.map((edition, index) => (
-              <EditionCard key={index} {...edition} />
+            {editionList.digital.map(({ bgPoster, poster, ...edition }, index) => (
+              <EditionCard key={index} bgPoster={bgPoster[0]} poster={poster[0]} {...edition} />
             ))}
           </div>
           <div
+            aria-hidden={isDigitalVisible}
             className={classNames({
               container: true,
               [styles.editions_wrapper]: true,
+              [styles.physical_edition_wrapper]: true,
               [styles.hidden]: isDigitalVisible
             })}
           >
-            {editionList.physical.map((edition, index) => (
-              <EditionCard key={index} backFlipStyles={styles.physical_backflip} {...edition} />
+            {editionList.physical.map(({ bgPoster, poster, ...edition }, index) => (
+              <EditionCard
+                key={index}
+                cardFooterStyles={styles.card_footer}
+                backFlipStyles={styles.physical_backflip}
+                bgPoster={bgPoster[0]}
+                poster={poster[0]}
+                {...edition}
+              />
             ))}
           </div>
         </>

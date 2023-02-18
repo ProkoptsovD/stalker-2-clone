@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { CLIENT_ROUTER_KEYS } from '../../../common/constants/app-keys.const';
 
 import type { NavbarProps } from '../../types/navbar.type';
 import styles from './navbar.module.css';
@@ -7,7 +8,9 @@ import styles from './navbar.module.css';
 function Navbar({ navLinks, Component, onClick }: NavbarProps) {
   const location = useLocation();
 
-  const [activeLinkName, setActiveLinkName] = React.useState<string>(location.hash || '/');
+  const [activeLinkName, setActiveLinkName] = React.useState<string>(
+    location.pathname || CLIENT_ROUTER_KEYS.HOME
+  );
 
   function navLinkClickHandler(path: string) {
     setActiveLinkName(path);
@@ -29,7 +32,7 @@ function Navbar({ navLinks, Component, onClick }: NavbarProps) {
             );
           }
 
-          const isActive = activeLinkName === path;
+          const isActive = path === activeLinkName;
           const cssClass = isActive ? styles.active + ' ' + styles.link : styles.link;
 
           return (
