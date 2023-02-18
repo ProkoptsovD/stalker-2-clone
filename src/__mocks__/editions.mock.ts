@@ -2,14 +2,33 @@ import { EditionFeature, EditionListType } from '../modules/common/types/edition
 import { ICON_NAME } from '../modules/common/types/icon.type';
 
 import bgPoster from '../assets/images/png/card-back-bg.png';
-import dStandart from '../assets/images/png/standard.png';
-import dDeluxe from '../assets/images/png/deluxe.png';
-import dUltimate from '../assets/images/png/ultimate.png';
+import sEditionBg from '../assets/images/webp/packshots-bg/digital-standart-bg.webp';
+import dEditionBg from '../assets/images/webp/packshots-bg/digital-deluxe-bg.webp';
+import uEditionBg from '../assets/images/webp/packshots-bg/digital-ultimate-bg.webp';
 
-import phStandart from '../assets/images/png/retail-s-items.png';
-import phLimited from '../assets/images/png/retail-l-items.png';
-import phCollectors from '../assets/images/png/retail-c-items.png';
-import phUltimate from '../assets/images/png/retail-u-items.png';
+import dStandart1 from '../assets/images/png/standard.png';
+import dStandart2 from '../assets/images/webp/packshots/standard-digital-packshot.webp';
+
+import dDeluxe1 from '../assets/images/png/deluxe.png';
+import dDeluxe2 from '../assets/images/webp/packshots/deluxe-digital-packshot.webp';
+
+import dUltimate1 from '../assets/images/png/ultimate.png';
+import dUltimate2 from '../assets/images/webp/packshots/ultimate-digita-packshot.webp';
+
+import phStandart1 from '../assets/images/png/retail-s-items.png';
+import phStandart2 from '../assets/images/webp/packshots/standard-physical-packshot.webp';
+
+import phLimited1 from '../assets/images/png/retail-l-items.png';
+import phLimited2 from '../assets/images/webp/packshots/limited-physical-packshot.webp';
+
+import phCollectors1 from '../assets/images/png/retail-c-items.png';
+import phCollectors2 from "../assets/images/webp/packshots/collector's-physical-packshot.webp";
+
+import phUltimate1 from '../assets/images/png/retail-u-items.png';
+import phUltimate2 from '../assets/images/webp/packshots/ultimate-physical-packshot.webp';
+
+const commonDescription =
+  'S.T.A.L.K.E.R. 2: Heart of Chornobyl is a sequel to the critically acclaimed survival-horror FPS series, set in an alternative version of the Chornobyl Exclusion Zone. Reveal a new chapter in the history of the Zone and delve into a nonlinear branching story in an open post-apocalyptic world. Fight for survival with various foes and hazardous radioactive environments, forging your own path through anomalies and opponents to the legendary Heart of Chornobyl.';
 
 const digitalEditionFeatures: EditionFeature[] = [
   {
@@ -139,25 +158,46 @@ const editionList: EditionListType = {
       version: 'standart edition',
       cost: { amount: 895, currency: '₴' },
       features: digitalEditionFeatures,
-      bgPoster,
-      poster: dStandart,
-      featuresAccessLimit: 2
+      bgPoster: [bgPoster, sEditionBg],
+      poster: [dStandart1, dStandart2],
+      featuresAccessLimit: 2,
+      details: {
+        title: 'Standard digital edition',
+        description: [
+          commonDescription,
+          'The Standard Digital Edition provides access to the complete game, includes a set of preorder bonuses and exclusive content for the Steam platform: a dynamic theme, an animated avatar, and a frame to distinguish a true  S.T.A.L.K.E.R. among his peers.'
+        ]
+      }
     },
     {
       version: 'deluxe edition',
       cost: { amount: 1199, currency: '₴' },
       features: digitalEditionFeatures,
-      bgPoster,
-      poster: dDeluxe,
-      featuresAccessLimit: 7
+      bgPoster: [bgPoster, dEditionBg],
+      poster: [dDeluxe1, dDeluxe2],
+      featuresAccessLimit: 7,
+      details: {
+        title: 'Deluxe digital edition',
+        description: [
+          commonDescription,
+          'The Digital Deluxe Edition provides access to the complete game, includes an exclusive side mission, set of preorder bonuses and exclusive content for the Steam platform, digital artbook, game soundtrack, character, and weapon skins for both singleplayer and multiplayer experience.'
+        ]
+      }
     },
     {
       version: 'ultimate edition',
       cost: { amount: 1599, currency: '₴' },
       features: digitalEditionFeatures,
-      bgPoster,
-      poster: dUltimate,
-      featuresAccessLimit: 0
+      bgPoster: [bgPoster, uEditionBg],
+      poster: [dUltimate1, dUltimate2],
+      featuresAccessLimit: 0,
+      details: {
+        title: 'ultimate digital edition',
+        description: [
+          commonDescription,
+          'The Digital Ultimate Edition includes all digital bonuses from the rest of the editions, even more character and weapon skins, and access to two upcoming story expansions along with all the additional downloadable content.'
+        ]
+      }
     }
   ],
   physical: [
@@ -165,32 +205,32 @@ const editionList: EditionListType = {
       version: 'standart edition',
       cost: { amount: 59.99, currency: '$' },
       features: physicalEditionFeatures,
-      bgPoster,
-      poster: phStandart,
+      bgPoster: [bgPoster, sEditionBg],
+      poster: [phStandart1, phStandart2],
       featuresAccessLimit: 5
     },
     {
       version: 'limited edition',
       cost: { amount: 79.99, currency: '$' },
       features: physicalEditionFeatures,
-      bgPoster,
-      poster: phLimited,
+      bgPoster: [bgPoster, sEditionBg],
+      poster: [phLimited1, phLimited2],
       featuresAccessLimit: 10
     },
     {
       version: "collector's edition",
       cost: { amount: 179.99, currency: '$' },
       features: physicalEditionFeatures,
-      bgPoster,
-      poster: phCollectors,
+      bgPoster: [bgPoster, dEditionBg],
+      poster: [phCollectors1, phCollectors2],
       featuresAccessLimit: 12
     },
     {
       version: 'ultimate edition',
       cost: { amount: 339.99, currency: '$' },
       features: physicalEditionFeatures,
-      bgPoster,
-      poster: phUltimate,
+      bgPoster: [bgPoster, uEditionBg],
+      poster: [phUltimate1, phUltimate2],
       featuresAccessLimit: 0
     }
   ]

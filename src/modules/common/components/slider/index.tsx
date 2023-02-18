@@ -101,19 +101,21 @@ export class SliderComponent<H> extends React.Component<SliderComponentProps<H>,
           </Slider>
         </div>
 
-        <div className={classNames(styles.slider_element, bodyStyle)}>
-          <Slider
-            asNavFor={this.state.sliderHeaderRef}
-            ref={(slider) => (this.sliderBody = slider)}
-            {...{
-              ...bodySliderConfig,
-              centerPadding: `${this.state.paddingSize - 45}px`,
-              ...bodyConfig
-            }}
-          >
-            {children}
-          </Slider>
-        </div>
+        {children ? (
+          <div className={classNames(styles.slider_element, bodyStyle)}>
+            <Slider
+              asNavFor={this.state.sliderHeaderRef}
+              ref={(slider) => (this.sliderBody = slider)}
+              {...{
+                ...bodySliderConfig,
+                centerPadding: `${this.state.paddingSize - 45}px`,
+                ...bodyConfig
+              }}
+            >
+              {children}
+            </Slider>
+          </div>
+        ) : null}
       </article>
     );
   }

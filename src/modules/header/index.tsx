@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useTransition, animated } from '@react-spring/web';
+import { useLocation } from 'react-router-dom';
 
 import { languageList } from '../common/constants/languages.const';
 import { ICON_NAME } from '../common/types/icon.type';
+import { CLIENT_ROUTER_KEYS } from '../common/constants/app-keys.const';
 
 import { logoAltText, preorderButton } from './constants/header.const';
 import { useSticky } from '../../hooks/use-sticky';
@@ -24,6 +26,8 @@ function Header() {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = React.useState<boolean>(false);
   const headerRef = React.useRef<HTMLDivElement | null>(null);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const location = useLocation();
+  const includePreorderButton = location.pathname === CLIENT_ROUTER_KEYS.HOME;
 
   const mobileMenuTransition = useTransition(isMobileMenuOpened, {
     from: {
@@ -89,14 +93,19 @@ function Header() {
               <LangSwitcher
                 languages={languageList}
                 onLanguageChange={(lang) => console.log(lang)}
-                className={classNames(styles.lang_switcher)}
+                className={classNames({
+                  [styles.lang_switcher]: true,
+                  [styles.align_center]: !includePreorderButton
+                })}
               />
-              <Button
-                className={styles.preorder}
-                variant="primary"
-                as="button"
-                content={preorderButton}
-              />
+              {includePreorderButton ? (
+                <Button
+                  className={styles.preorder}
+                  variant="primary"
+                  as="button"
+                  content={preorderButton}
+                />
+              ) : null}
             </>
           )}
         </div>

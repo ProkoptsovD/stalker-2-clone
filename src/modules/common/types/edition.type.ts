@@ -20,9 +20,13 @@ export type Edition = {
   version: string;
   features: EditionFeature[];
   cost: Cost;
-  poster: string;
-  bgPoster: string;
+  poster: string[];
+  bgPoster: string[];
   featuresAccessLimit: number;
+  details?: {
+    title: string;
+    description: string[];
+  };
 };
 
 export type EditionListType = {

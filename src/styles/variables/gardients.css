@@ -19,4 +19,10 @@
     rgba(24, 21, 18, 0)
   );
   --l-gradient-subscription-form: linear-gradient(0deg, #000 84%, transparent 102%);
+  --l-bottom-line: linear-gradient(
+    90deg,
+    rgba(242, 232, 217, 0) 1.36%,
+    rgb(242, 232, 217) var(--l-bottom-line-middle, 50%),
+    rgba(242, 232, 217, 0) 99.09%
+  );
 }

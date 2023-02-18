@@ -28,19 +28,21 @@ function EditionCard({
   features,
   featuresAccessLimit,
   className,
-  backFlipStyles
+  backFlipStyles,
+  cardFooterStyles,
+  withAnimation = true
 }: EditionCardProps) {
   const articleRef = useRef<HTMLElement | null>(null);
   const separatorRef = useRef<SVGSVGElement | null>(null);
   const isFirstRender = useRef<boolean>(true);
-  const pixiApp = useRef<PixiApp>(new PixiApp());
+  const pixiApp = useRef<PixiApp | null>(withAnimation ? new PixiApp() : null);
 
   const hasTouchScreen = useHasTouchScreen();
   const key = version as keyof typeof digitalEditionPreorderLinkMap;
   const preorderlink = getPreoderLink(digitalEditionPreorderLinkMap[key] ?? 'sdad');
 
   useEffect(() => {
-    if (articleRef.current && isFirstRender.current) {
+    if (articleRef.current && isFirstRender.current && withAnimation && pixiApp.current) {
       isFirstRender.current = false;
 
       const { offsetWidth, offsetHeight } = articleRef.current;
@@ -57,17 +59,21 @@ function EditionCard({
   }, []);
 
   function playAnimation(mode: 'forward' | 'backward') {
+    if (!withAnimation) return;
+
     if (mode === 'forward') {
-      pixiApp.current.demolitionEffect.play();
+      pixiApp.current?.demolitionEffect.play();
       separatorRef.current?.classList.add(styles.separator_primary);
     } else {
-      pixiApp.current.demolitionEffect.reverse(REVERSE_ANIMATION_SPEED);
+      pixiApp.current?.demolitionEffect.reverse(REVERSE_ANIMATION_SPEED);
       separatorRef.current?.classList.remove(styles.separator_primary);
     }
   }
 
   function handleSwitchPosterBtnClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
+
+    if (!withAnimation) return;
 
     const hasClass = event.currentTarget.classList.contains(styles.spin_clockwise);
 
@@ -109,7 +115,7 @@ function EditionCard({
         />
       </div>
 
-      <div className={classNames(styles.card_footer)}>
+      <div className={classNames(styles.card_footer, cardFooterStyles)}>
         {hasTouchScreen ? (
           <button
             type="button"
@@ -138,7 +144,11 @@ function EditionCard({
 
 export default EditionCard;
 
-interface EditionCardProps extends Edition {
+interface EditionCardProps extends Omit<Edition, 'bgPoster' | 'poster'> {
   className?: string;
   backFlipStyles?: string;
+  cardFooterStyles?: string;
+  withAnimation?: boolean;
+  bgPoster: string;
+  poster: string;
 }

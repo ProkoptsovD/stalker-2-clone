@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames';
 
 import Icon from '../../icon';
@@ -7,9 +8,9 @@ import type { EditionFeature } from '../../../types/edition.type';
 import { ICON_NAME } from '../../../types/icon.type';
 import styles from './backflip-side.module.css';
 
-function BackflipSide({ items, itemsAccessLimit, className }: BackflipSideProps) {
+function BackflipSide({ items, itemsAccessLimit, className, containerStyles }: BackflipSideProps) {
   return (
-    <ul className={styles.list}>
+    <ul className={classNames(styles.list, containerStyles)}>
       {items.map(({ feature, icon, details }, index) => {
         const isAvailable = index < itemsAccessLimit;
         const itemStyle = isAvailable || !itemsAccessLimit ? '' : styles.item_disabled;
@@ -23,7 +24,7 @@ function BackflipSide({ items, itemsAccessLimit, className }: BackflipSideProps)
             </span>
 
             {details ? (
-              <>
+              <div className={classNames(styles.tooltip_wrapper)}>
                 <Icon
                   role="button"
                   tabIndex={0}
@@ -37,7 +38,7 @@ function BackflipSide({ items, itemsAccessLimit, className }: BackflipSideProps)
                   keyExtractor={(detail) => detail.text}
                   className={styles.details}
                 />
-              </>
+              </div>
             ) : null}
           </li>
         );
@@ -52,4 +53,5 @@ export interface BackflipSideProps {
   items: EditionFeature[];
   itemsAccessLimit: number;
   className?: string;
+  containerStyles?: string;
 }

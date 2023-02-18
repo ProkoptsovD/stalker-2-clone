@@ -34,7 +34,7 @@
   height: 1.25rem;
 }
 
-.icon:focus {
+.icon:focus-visible {
   outline: 1px solid var(--clr-primary-400);
 }
 
@@ -45,14 +45,21 @@
   cursor: pointer;
 }
 
-.details {
+[role='tooltip'] {
   opacity: 0;
   visibility: hidden;
 }
 
-.tooltip:hover + .details {
+.tooltip:hover + [role='tooltip'] {
   opacity: 1;
   visibility: visible;
+
+  z-index: 4;
+}
+
+.tooltip_wrapper {
+  position: relative;
+  align-self: flex-end;
 }
 
 .primary_color {

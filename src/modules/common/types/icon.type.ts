@@ -59,5 +59,6 @@ export enum ICON_NAME {
   ARROW_LEFT = 'icon-arrow-left-01',
   X_CLOSE = 'icon-x-close-01',
   LOGO_GOG_02 = 'icon-logo-gog-02',
-  CHEVRON_DOWN = 'icon-chevron-down'
+  CHEVRON_DOWN = 'icon-chevron-down',
+  CREDIT_CARD = 'icon-credit-card'
 }

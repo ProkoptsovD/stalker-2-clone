@@ -1,4 +1,5 @@
 :root {
+  --padding-desktop: 1rem;
   --padding-tablet: 2rem;
   --padding-mobile: 1.5rem;
   --animation-duration: 400ms;
@@ -8,11 +9,11 @@
 
 .card {
   position: relative;
-  max-width: 23.75rem;
+  max-width: 18.75rem;
   width: 100%;
-  min-width: 18.75rem;
-  max-height: 42.625rem;
+  max-height: 41.65rem;
   height: 100%;
+  margin: 0 auto;
   aspect-ratio: 1 / 1.795;
   background-repeat: no-repeat;
   background-position: center;
@@ -47,9 +48,10 @@
   bottom: 0;
   right: 0;
   left: 0;
-  height: 15%;
+  height: 17.5%;
   z-index: 3;
 
+  padding-top: 0.25rem;
   padding-bottom: 0.5rem;
 }
 
@@ -57,9 +59,22 @@
   .card_content_wrapper {
     padding: var(--padding-tablet);
   }
+}
+
+@media screen and (min-width: 1024px) {
+  .card_content_wrapper {
+    padding-top: var(--padding-desktop);
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .card {
+    max-width: 23.75rem;
+    max-height: 42.65rem;
+  }
 
   .card_footer {
-    height: 18%;
+    height: 16%;
   }
 }
 
@@ -70,6 +85,7 @@
   font-weight: var(--f-fw-500);
   font-size: var(--f-fs-550);
   text-align: center;
+  line-height: 1;
 
   color: var(--clr-primary-400);
 }
@@ -105,7 +121,7 @@
 
 .rotation_btn {
   position: absolute;
-  top: -4rem;
+  top: -3rem;
   left: 45%;
 
   display: flex;
@@ -127,6 +143,12 @@
   width: 100%;
   height: 100%;
   fill: var(--clr-dark-700);
+}
+
+@media screen and (min-width: 1240px) {
+  .rotation_btn {
+    top: -4rem;
+  }
 }
 
 .spin_on_render {

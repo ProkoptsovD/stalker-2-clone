@@ -80,18 +80,14 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
       return `${(clientX / coefficient) * -1}px`;
     }
 
-    updateCustomCssProperty(
+    const updateXPosition = updateCustomCssProperty(document.documentElement);
+
+    updateXPosition(
       '--cloud-x-slide',
       calculateBgXSlidePosition(X_MOVEMENT_SPEED_COEFFICIENT.CLOUD)
     );
-    updateCustomCssProperty(
-      '--sun-x-slide',
-      calculateBgXSlidePosition(X_MOVEMENT_SPEED_COEFFICIENT.SUN)
-    );
-    updateCustomCssProperty(
-      '--hero-x-slide',
-      calculateBgXSlidePosition(X_MOVEMENT_SPEED_COEFFICIENT.HERO)
-    );
+    updateXPosition('--sun-x-slide', calculateBgXSlidePosition(X_MOVEMENT_SPEED_COEFFICIENT.SUN));
+    updateXPosition('--hero-x-slide', calculateBgXSlidePosition(X_MOVEMENT_SPEED_COEFFICIENT.HERO));
   }
 
   function preorderButtonClickHandler() {}
