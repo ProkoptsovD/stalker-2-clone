@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import styles from './showroom.module.css';
 import mobileStyles from './showroom-mobile.module.css';
 import useMediaQuery from '../../../../hooks/use-media-query';
+import SliderComponent from '../slider';
 
 import type { DefaultHeaderProps, ShowroomProps } from '../../types/showroom.type';
 
 import { updateCustomCssProperty } from '../../../../utils/update-custom-css-property';
-import { mobileSliderSettings, settings } from './config';
-import SliderComponent from '../slider';
+import { mobileSliderSettings, tabletAndDesktopSettings } from './config';
 import { SliderComponentProps } from '../../types/slider.type';
 
 function Showroom<T>({
@@ -19,15 +19,18 @@ function Showroom<T>({
   headerInitialSlide,
   children,
   indicatorAccuracyCorrection = 0,
-  RenderHeaderItem = DefaultHeader
+  RenderHeaderItem = DefaultHeader,
+  config
 }: ShowroomProps<T>) {
   const [activeButton, setActiveButton] = React.useState(headerInitialSlide ?? 0);
   const headerRef = React.useRef<HTMLUListElement | null>(null);
   const mainSliderRef = React.useRef<SlickSlider | null>(null);
 
   const isTabletAndDesktopScreen = useMediaQuery('(min-width: 640px)');
+  const isTabletScreen = useMediaQuery('(min-width: 640px) and (max-width: 1023px)');
 
   const activeButtonCssClass = styling?.activeButton ?? styles.active;
+  const sliderConfig = { ...tabletAndDesktopSettings, dots: isTabletScreen, ...config };
 
   React.useEffect(() => {
     if (!isTabletAndDesktopScreen) return;
@@ -73,7 +76,7 @@ function Showroom<T>({
   }, [activeButton]);
 
   return (
-    <article className={classNames(styles.showroom, styling?.showroom)}>
+    <article data-element="showroom" className={classNames(styles.showroom, styling?.showroom)}>
       {/* header wrapper */}
       <div className={classNames(styles.header_wrapper, styling?.headerWrapper)}>
         <ul
@@ -98,16 +101,12 @@ function Showroom<T>({
           ))}
         </ul>
       </div>
-      <br />
 
       <SlickSlider
         ref={mainSliderRef}
-        {...settings}
+        {...sliderConfig}
         beforeChange={(_, next) => setActiveButton(next)}
       >
-        <div className={styles.test}>1</div>
-        <div className={styles.test}>2</div>
-        <div className={styles.test}>3</div>
         {children}
       </SlickSlider>
     </article>

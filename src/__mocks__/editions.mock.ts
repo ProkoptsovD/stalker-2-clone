@@ -27,6 +27,11 @@ import phCollectors2 from "../assets/images/webp/packshots/collector's-physical-
 import phUltimate1 from '../assets/images/png/retail-u-items.png';
 import phUltimate2 from '../assets/images/webp/packshots/ultimate-physical-packshot.webp';
 
+import phStardardEditionContent from '../assets/images/webp/packshots/p-standard-edition-content.webp';
+import phLimitedEditionContent from '../assets/images/webp/packshots/p-limited-edition-content.webp';
+import phCollectorsEditionContent from '../assets/images/webp/packshots/p-collectors-edition-content.webp';
+import phUltimateEditionContent from '../assets/images/webp/packshots/p-ultimate-edition-content.webp';
+
 const commonDescription =
   'S.T.A.L.K.E.R. 2: Heart of Chornobyl is a sequel to the critically acclaimed survival-horror FPS series, set in an alternative version of the Chornobyl Exclusion Zone. Reveal a new chapter in the history of the Zone and delve into a nonlinear branching story in an open post-apocalyptic world. Fight for survival with various foes and hazardous radioactive environments, forging your own path through anomalies and opponents to the legendary Heart of Chornobyl.';
 
@@ -89,7 +94,7 @@ const digitalEditionFeatures: EditionFeature[] = [
 
 const physicalEditionFeatures: EditionFeature[] = [
   {
-    feature: 'Standard + PO bonus',
+    feature: 'preorder bonus',
     icon: ICON_NAME.PLUS,
     details: [
       { text: 'Extended campfire content' },
@@ -207,7 +212,8 @@ const editionList: EditionListType = {
       features: physicalEditionFeatures,
       bgPoster: [bgPoster, sEditionBg],
       poster: [phStandart1, phStandart2],
-      featuresAccessLimit: 5
+      featuresAccessLimit: 5,
+      packContent: phStardardEditionContent
     },
     {
       version: 'limited edition',
@@ -215,7 +221,8 @@ const editionList: EditionListType = {
       features: physicalEditionFeatures,
       bgPoster: [bgPoster, sEditionBg],
       poster: [phLimited1, phLimited2],
-      featuresAccessLimit: 10
+      featuresAccessLimit: 10,
+      packContent: phLimitedEditionContent
     },
     {
       version: "collector's edition",
@@ -223,7 +230,8 @@ const editionList: EditionListType = {
       features: physicalEditionFeatures,
       bgPoster: [bgPoster, dEditionBg],
       poster: [phCollectors1, phCollectors2],
-      featuresAccessLimit: 12
+      featuresAccessLimit: 12,
+      packContent: phCollectorsEditionContent
     },
     {
       version: 'ultimate edition',
@@ -231,7 +239,8 @@ const editionList: EditionListType = {
       features: physicalEditionFeatures,
       bgPoster: [bgPoster, uEditionBg],
       poster: [phUltimate1, phUltimate2],
-      featuresAccessLimit: 0
+      featuresAccessLimit: 0,
+      packContent: phUltimateEditionContent
     }
   ]
 };

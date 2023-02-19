@@ -1,3 +1,5 @@
+import React from 'react';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import Accordion from '../common/components/accordion';
@@ -20,8 +22,6 @@ import {
 import useHasTouchScreen from '../../hooks/use-has-touch-screen';
 import useIsMobileDevice from '../../hooks/use-is-mobile-device';
 import useMediaQuery from '../../hooks/use-media-query';
-import classNames from 'classnames';
-import React from 'react';
 
 function AboutZone() {
   const isMobileScreenSize = useMediaQuery('(max-width: 639px)');

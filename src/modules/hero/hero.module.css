@@ -105,15 +105,17 @@
 
 @media screen and (min-width: 1024px) {
   .content_layout {
-    width: 45%;
+    width: 50%;
     padding-left: 3rem;
-    padding-top: calc(var(--header-height) + 0.65rem);
+    padding-top: var(--header-height);
     justify-content: initial;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .content_layout {
-    padding-top: calc(var(--header-height) + 2.65rem);
+    width: 45%;
+    padding-top: calc(var(--header-height) + 5.65rem);
   }
 }
 

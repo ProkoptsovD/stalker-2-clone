@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 1.5rem;
+  padding-inline: 0.65rem;
 }
 
 .physical_edition_wrapper .card_footer > * {

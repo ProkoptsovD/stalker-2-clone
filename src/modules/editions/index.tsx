@@ -16,11 +16,11 @@ import useMediaQuery from '../../hooks/use-media-query';
 import styles from './editions.module.css';
 
 import { ICON_NAME } from '../common/types/icon.type';
+import { editionPacks } from '../common/constants/edition-packs.const';
 import {
   editionsSectionHeadline,
   editionsSectionSubHeadline,
   editionsTypes,
-  editionVaraints,
   preorderBonuses
 } from './constants/editions.const';
 
@@ -59,7 +59,7 @@ function Editions({ className }: EditionsProps) {
       {hasTouchScreen ? (
         <>
           <Slider
-            headerItems={editionVaraints}
+            headerItems={editionPacks.digital}
             className={classNames({ [styles.hidden]: !isDigitalVisible })}
             headerStyle={classNames({
               [styles.sticky]: inView,
@@ -72,7 +72,7 @@ function Editions({ className }: EditionsProps) {
             ))}
           </Slider>
           <Slider
-            headerItems={editionVaraints}
+            headerItems={editionPacks.physical}
             headerStyle={classNames({
               [styles.sticky]: inView,
               [styles.static]: !inView
