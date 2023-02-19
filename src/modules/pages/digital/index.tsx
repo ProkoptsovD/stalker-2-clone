@@ -1,36 +1,30 @@
-import React from 'react';
-
+import useMediaQuery from '../../../hooks/use-media-query';
 import editionList from '../../../__mocks__/editions.mock';
+import { editionPacks } from '../../common/constants/edition-packs.const';
+
 import PreorderEditionCard from '../../common/components/preorder-edition-card';
 import Showroom from '../../common/components/showroom';
-
 import EditionPageLayout from '../../common/layouts/edition-page';
 
 import styles from './digital.module.css';
 
-const items = ['1', '2', '3'];
-
 function DigitalPage() {
+  const isMobileScreen = useMediaQuery('(max-width: 639px)');
+  const ShowroomComponent = isMobileScreen ? Showroom.Mobile : Showroom;
+
   return (
     <EditionPageLayout>
-      {/* <Showroom headerItems={items} keyExtractor={(item) => item} /> */}
-      <Showroom.Mobile headerItems={items}>
-        <PreorderEditionCard
-          {...editionList.digital[0]}
-          poster={editionList.digital[0].poster[1]}
-          bgPoster={editionList.digital[0].bgPoster[1]}
-        />
-        <PreorderEditionCard
-          {...editionList.digital[1]}
-          poster={editionList.digital[1].poster[1]}
-          bgPoster={editionList.digital[1].bgPoster[1]}
-        />
-        <PreorderEditionCard
-          {...editionList.digital[2]}
-          poster={editionList.digital[2].poster[1]}
-          bgPoster={editionList.digital[2].bgPoster[1]}
-        />
-      </Showroom.Mobile>
+      <ShowroomComponent headerItems={editionPacks.digital} keyExtractor={(item) => item}>
+        {editionList.digital.map(({ bgPoster, poster, ...edition }, index) => (
+          <PreorderEditionCard
+            key={index}
+            variant="digital"
+            poster={poster[1]}
+            bgPoster={bgPoster[1]}
+            {...edition}
+          />
+        ))}
+      </ShowroomComponent>
     </EditionPageLayout>
   );
 }

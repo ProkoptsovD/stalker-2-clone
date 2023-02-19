@@ -1,6 +1,6 @@
 import * as ReactDom from 'react-dom';
 import classNames from 'classnames';
-import { animated, useTransition, UseSpringProps, UseTransitionProps } from '@react-spring/web';
+import { animated, useTransition, UseTransitionProps } from '@react-spring/web';
 
 import styles from './modal.module.css';
 import Icon from '../icon';
@@ -69,5 +69,7 @@ export type ModalProps = {
   backdropStyles?: string;
   modalBodyStyles?: string;
   closeButtonStyles?: string;
-  configTransition?: () => object;
+  configTransition?: () => ModalTransitionConfg;
 };
+
+export type ModalTransitionConfg = UseTransitionProps;

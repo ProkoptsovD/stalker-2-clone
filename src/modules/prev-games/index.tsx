@@ -10,6 +10,7 @@ import {
 } from './constants/prev-games.const';
 import { dividerAlt } from '../about-game/constants/about-game.const';
 import { socialLinks } from '../common/constants/social-links.const';
+import { links } from '../common/constants/preorder-edition-card.const';
 import { ICON_NAME } from '../common/types/icon.type';
 
 import Divider from '../common/components/divider';
@@ -69,7 +70,8 @@ function PrevGames() {
           className={classNames(styles.join_brotherhood)}
           iconName={ICON_NAME.DISCORD}
           content={joinTheBrotherHood}
-          as="button"
+          as="a"
+          href={links.allRetailers}
           variant="primary"
         />
       </div>

@@ -3,12 +3,16 @@ import { Settings } from 'react-slick';
 export const settings: Settings = {
   arrows: false,
   autoplay: false,
+  slidesToShow: 1,
   dots: true,
   dotsClass: 'dot',
-  speed: 100,
-  slidesToShow: 1,
-  swipeToSlide: true,
-  fade: true
+  lazyLoad: 'progressive'
+};
+
+export const tabletAndDesktopSettings: Settings = {
+  ...settings,
+  useTransform: false,
+  useCSS: false
 };
 
 export const mobileSliderSettings: Settings = {

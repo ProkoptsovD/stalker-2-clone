@@ -1,3 +1,5 @@
+import { Settings } from 'react-slick';
+
 export type ShowroomProps<T> = {
   styling?: Partial<{
     showroom: string;
@@ -12,6 +14,7 @@ export type ShowroomProps<T> = {
   RenderHeaderItem?: React.FunctionComponent<DefaultHeaderProps<T>>;
   headerItems: T[];
   children?: React.ReactNode;
+  config?: Settings;
   keyExtractor: KeyExtractor<T>;
 };
 

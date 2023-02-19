@@ -27,6 +27,7 @@ export type Edition = {
     title: string;
     description: string[];
   };
+  packContent?: string;
 };
 
 export type EditionListType = {
