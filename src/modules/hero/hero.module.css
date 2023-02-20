@@ -59,9 +59,16 @@
     margin-bottom: 6rem;
   }
 }
+
 @media screen and (min-width: 1024px) {
   .logo {
     margin-bottom: 6rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .logo {
+    margin-bottom: 5rem;
   }
 }
 
@@ -112,17 +119,21 @@
   }
 }
 
+.hero_wrapper .add_to_wish {
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: var(--f-fw-500);
+}
+
 @media screen and (min-width: 1280px) {
   .content_layout {
     width: 45%;
     padding-top: calc(var(--header-height) + 5.65rem);
   }
-}
 
-.hero_wrapper .add_to_wish {
-  width: fit-content;
-  margin: 0 auto;
-  font-weight: var(--f-fw-500);
+  .hero_wrapper .add_to_wish {
+    margin-bottom: 1rem;
+  }
 }
 
 .hero_footer {

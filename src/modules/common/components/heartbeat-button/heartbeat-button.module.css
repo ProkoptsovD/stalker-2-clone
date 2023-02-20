@@ -1,3 +1,5 @@
+@import '../../../../styles/variables/animations.css';
+
 .button {
   position: relative;
   display: block;
@@ -28,7 +30,7 @@
   background-repeat: repeat-x;
   background-size: auto 100%;
 
-  animation: heart-beat 4s ease-in-out infinite;
+  animation: heartbeat-3-beats-colored 4s var(--heartbeat-anim-config);
   z-index: -1;
 }
 
@@ -55,49 +57,4 @@
   top: 0.25rem;
   left: 0.25rem;
   border: 2px solid var(--clr-dark-500);
-}
-
-@keyframes heart-beat {
-  0% {
-    transform: scale(1);
-    background-color: var(--clr-primary-400);
-  }
-  5% {
-    transform: scale(1.02);
-    box-shadow: var(--shdw-650);
-    background-color: var(--clr-anim-500);
-  }
-  10% {
-    transform: scale(1);
-    box-shadow: var(--shdw-600);
-    background-color: var(--clr-primary-400);
-  }
-  40% {
-    transform: scale(1);
-    background-color: var(--clr-primary-400);
-  }
-  45% {
-    transform: scale(1.02);
-    box-shadow: var(--shdw-650);
-    background-color: var(--clr-anim-500);
-  }
-  50% {
-    transform: scale(1.015);
-    box-shadow: var(--shdw-700);
-    background-color: var(--clr-anim-600);
-  }
-  53% {
-    transform: scale(1.035);
-    box-shadow: var(--shdw-800);
-    background-color: var(--clr-anim-800);
-  }
-  75% {
-    transform: scale(1);
-    box-shadow: var(--shdw-600);
-    background-color: var(--clr-primary-400);
-  }
-  100% {
-    transform: scale(1);
-    background-color: var(--clr-primary-400);
-  }
 }

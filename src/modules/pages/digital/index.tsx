@@ -6,8 +6,6 @@ import PreorderEditionCard from '../../common/components/preorder-edition-card';
 import Showroom from '../../common/components/showroom';
 import EditionPageLayout from '../../common/layouts/edition-page';
 
-import styles from './digital.module.css';
-
 function DigitalPage() {
   const isMobileScreen = useMediaQuery('(max-width: 639px)');
   const ShowroomComponent = isMobileScreen ? Showroom.Mobile : Showroom;

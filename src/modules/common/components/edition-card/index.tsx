@@ -142,7 +142,11 @@ function EditionCard({
   );
 }
 
-export default EditionCard;
+/*
+ * WebGl and Pixi.js is quite heavy
+ * so we want to prevent unnecessary rerenders
+ */
+export default React.memo(EditionCard);
 
 interface EditionCardProps extends Omit<Edition, 'bgPoster' | 'poster'> {
   className?: string;

@@ -33,6 +33,16 @@ function Showroom<T>({
   const sliderConfig = { ...tabletAndDesktopSettings, dots: isTabletScreen, ...config };
 
   React.useEffect(() => {
+    // this timeout helps to prevent indicator's sliding when component mounts
+    const timeoutID = setTimeout(
+      () => headerRef.current?.classList.add(styles.with_transition),
+      10
+    );
+
+    return () => clearInterval(timeoutID);
+  }, []);
+
+  React.useEffect(() => {
     if (!isTabletAndDesktopScreen) return;
 
     if (headerRef.current && headerItems.length > 0) {

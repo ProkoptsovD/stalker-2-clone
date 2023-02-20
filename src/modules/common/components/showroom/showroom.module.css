@@ -84,8 +84,11 @@
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABxSURBVHgBbUy7DYAgFHyCHY1uACO4gW7iBo6AmzkGiY0liY1oDB0iIBAKL3m/e3cHUOCSYjyk6EuuLg+oEMffxhKF0nLv6+QG9XVKMWePby6W4gotUeBZZbRmLetUSMAI8/z0sNDUhPCgje4NfmDsM7xQpx+AjOTtJwAAAABJRU5ErkJggg==);
   background-repeat: no-repeat;
   background-size: contain;
+}
 
-  transition: left var(--tr-speed-350) var(--tr-func-700);
+.header.tablet_and_desktop.with_transition::before {
+  transition: left var(--tr-speed-350) var(--tr-func-700),
+    background-image var(--tr-speed-350) var(--tr-func-700);
 }
 
 /* modile */
