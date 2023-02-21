@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './hamburger.module.css';
 
-function Hamburger({ className, onClick, ...restProps }: HumburgerProps) {
+function Hamburger({ className, onClick, isExpanded, ...restProps }: HumburgerProps) {
   function hamburgerClickHandler(event: React.MouseEvent<HTMLButtonElement>) {
     const btn = event.currentTarget;
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
@@ -19,7 +19,7 @@ function Hamburger({ className, onClick, ...restProps }: HumburgerProps) {
     <button
       className={`${styles.hamburger_btn} ${className ?? ''}`}
       onClick={hamburgerClickHandler}
-      aria-expanded="false"
+      aria-expanded={isExpanded}
       {...restProps}
     >
       <span className={styles.line} />
@@ -31,4 +31,6 @@ function Hamburger({ className, onClick, ...restProps }: HumburgerProps) {
 
 export default Hamburger;
 
-export interface HumburgerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface HumburgerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isExpanded: boolean;
+}

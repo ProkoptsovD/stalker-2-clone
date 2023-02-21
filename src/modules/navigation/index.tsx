@@ -5,11 +5,12 @@ import { CLIENT_ROUTER_KEYS } from '../common/constants/app-keys.const';
 import HomePage from '../pages/home';
 import DigitalPage from '../pages/digital';
 import PhysicalPage from '../pages/physical';
-import TermsOfUsePage from '../terms';
-import PrivatePolicyPage from '../private-policy';
-import FaqPage from '../faq';
+// import TermsOfUsePage from '../terms';
+// import PrivatePolicyPage from '../private-policy';
+// import FaqPage from '../faq';
 import NotFoundPage from '../pages/not-found';
 import SharedLayout from '../common/layouts/shared-layout';
+import ComingSoonPage from '../pages/coming-soon';
 
 export function MainRouter() {
   const router = createBrowserRouter([
@@ -31,21 +32,21 @@ export function MainRouter() {
         },
         {
           path: CLIENT_ROUTER_KEYS.TERMS_OF_USE,
-          element: <TermsOfUsePage />
+          element: <ComingSoonPage />
         },
         {
           path: CLIENT_ROUTER_KEYS.PRIVACY_POLICY,
-          element: <PrivatePolicyPage />
+          element: <ComingSoonPage />
         },
         {
           path: CLIENT_ROUTER_KEYS.FAQ,
-          element: <FaqPage />
-        },
-        {
-          path: '*',
-          element: <NotFoundPage />
+          element: <ComingSoonPage />
         }
       ]
+    },
+    {
+      path: '*',
+      element: <NotFoundPage />
     }
   ]);
 

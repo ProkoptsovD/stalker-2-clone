@@ -1,26 +1,26 @@
-import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './mobile-humburger-menu.module.css';
+import useHasTouchScreen from '../../../../hooks/use-has-touch-screen';
 
+import Navbar from '../../../header/components/navbar';
 import type { NavbarLink } from '../../../header/types/navbar.type';
 
-function MobileHumburgerMenu({ className, navLinks }: MobileHumburgerMenuProps) {
-  const activeStyle = {
-    opacity: '1'
-  };
+function MobileHumburgerMenu({ className, navLinks, onClick }: MobileHumburgerMenuProps) {
+  const hasToushScreen = useHasTouchScreen();
+
+  function linkClickHandler() {
+    if (onClick) onClick();
+  }
 
   return (
     <div className={classNames(styles.humburger_menu, className)}>
-      <ul className={classNames(styles.link_list)}>
-        {navLinks.map(({ path, title }) => (
-          <li key={title} className={classNames(styles.link_list_item)}>
-            <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to={path}>
-              {title}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <Navbar
+        navLinks={navLinks}
+        listStyles={styles.link_list}
+        activeLinkStyles={classNames({ [styles.active]: true, [styles.desktop]: !hasToushScreen })}
+        onClick={linkClickHandler}
+      />
     </div>
   );
 }
@@ -30,4 +30,5 @@ export default MobileHumburgerMenu;
 export type MobileHumburgerMenuProps = {
   className?: string;
   navLinks: NavbarLink[];
+  onClick?: () => void;
 };

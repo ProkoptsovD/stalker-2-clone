@@ -86,6 +86,7 @@ function Header() {
               <Hamburger
                 className={classNames(styles.hamburger)}
                 onClick={setIsMobileMenuOpened.bind(null, !isMobileMenuOpened)}
+                isExpanded={isMobileMenuOpened}
               />
             </>
           ) : (
@@ -115,7 +116,10 @@ function Header() {
         ({ transform }, isMobileMenuOpened) =>
           isMobileMenuOpened && (
             <animated.div className={classNames(styles.menu)} style={{ transform }}>
-              <MobileHumburgerMenu navLinks={navLinkList} />
+              <MobileHumburgerMenu
+                navLinks={navLinkList}
+                onClick={setIsMobileMenuOpened.bind(null, false)}
+              />
             </animated.div>
           )
       )}
