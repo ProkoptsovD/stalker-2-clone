@@ -40,12 +40,14 @@
 
 /* showroom */
 
-[data-element='showroom'] .slick-slide {
-  opacity: 0;
+@media screen and (max-width: 639px) {
+  [data-element='showroom'] .slick-slide {
+    opacity: 0;
 
-  transition: opacity 700ms var(--tr-func-500);
-}
+    transition: opacity 700ms var(--tr-func-500);
+  }
 
-[data-element='showroom'] .slick-slide.slick-active {
-  opacity: 1;
+  [data-element='showroom'] .slick-slide.slick-active {
+    opacity: 1;
+  }
 }

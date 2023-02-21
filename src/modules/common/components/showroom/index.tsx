@@ -28,9 +28,15 @@ function Showroom<T>({
 
   const isTabletAndDesktopScreen = useMediaQuery('(min-width: 640px)');
   const isTabletScreen = useMediaQuery('(min-width: 640px) and (max-width: 1023px)');
+  const isLaptopScreen = useMediaQuery('(min-width: 1024px)');
 
   const activeButtonCssClass = styling?.activeButton ?? styles.active;
-  const sliderConfig = { ...tabletAndDesktopSettings, dots: isTabletScreen, ...config };
+  const sliderConfig = {
+    ...tabletAndDesktopSettings,
+    dots: isTabletScreen,
+    draggable: !isLaptopScreen,
+    ...config
+  };
 
   React.useEffect(() => {
     // this timeout helps to prevent indicator's sliding when component mounts

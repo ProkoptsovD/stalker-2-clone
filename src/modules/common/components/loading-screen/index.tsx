@@ -30,16 +30,14 @@ export default LoadingScreen;
 function DefaultLogo({ styling = {}, logoImg = logoDefaultImg, withAnimation }: DefaultLogoProps) {
   return (
     <div className={classNames(styling.wrapper1)}>
-      <div className={classNames(styles.wrapper2)}>
-        <img
-          src={radioactiveSunImg}
-          className={classNames({
-            [styling.image1 as string]: true,
-            [styles.heartbeat]: withAnimation
-          })}
-          alt={logoAltText}
-        />
-      </div>
+      <img
+        src={radioactiveSunImg}
+        className={classNames({
+          [styling.image1 as string]: true,
+          [styles.heartbeat]: withAnimation
+        })}
+        alt={logoAltText}
+      />
       <img src={logoImg} className={classNames(styling.logoImg)} alt={logoAltText} />
     </div>
   );

@@ -154,6 +154,43 @@
 .with_bg {
   background-color: var(--clr-dark-900);
 }
+/* slide animation */
+
+[data-variant='digital'] .slide,
+[data-variant='digital'] .slide {
+  position: relative;
+  top: 0;
+  opacity: 0.7;
+
+  transition: left var(--tr-speed-400) var(--tr-func-400),
+    opacity var(--tr-speed-400) var(--tr-func-400);
+}
+
+[data-variant='digital'] .slide.right {
+  left: -40px;
+}
+
+[data-variant='digital'] .slide.left {
+  left: 30px;
+}
+
+[data-variant='digital'] .slide.to_center,
+[data-variant='digital'] .slide.to_center {
+  opacity: 1;
+  left: 0;
+}
+
+[data-variant='digital'] .slide.left:not(.to_center),
+[data-variant='digital'] .slide.right:not(.to_center) {
+  color: transparent;
+  fill: transparent;
+  visibility: hidden;
+}
+
+[data-variant='digital'] .slide.left.to_center.delay,
+[data-variant='digital'] .slide.right.to_center.delay {
+  transition-delay: 80ms;
+}
 
 /* ============ DIGITAL VARIANT OF EDITION AND COMMON STYLES ============= */
 
