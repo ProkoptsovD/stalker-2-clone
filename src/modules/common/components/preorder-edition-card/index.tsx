@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useInView } from 'react-intersection-observer';
 
 import Button from '../button';
 import Icon from '../icon';
@@ -38,6 +39,8 @@ function PreorderEditionCard({
   modalAnimationConfg
 }: PreorderEditionCardProps) {
   const [isModalOpened, setIsModalOpened] = React.useState<boolean>(false);
+  const featuresRef = useInView({ threshold: 0.3 });
+  const descriptionRef = useInView({ threshold: 0.1 });
 
   const isMobileScreen = useMediaQuery('(max-width: 639px)');
   const isSmallTablet = useMediaQuery('(min-width: 640px)');
@@ -77,19 +80,37 @@ function PreorderEditionCard({
         />
 
         {isTabletScreen ? (
-          <BackflipSide
-            items={features}
-            itemsAccessLimit={featuresAccessLimit}
-            className={classNames({ [styles.features]: true })}
-            containerStyles={classNames({
-              [styles.with_bg]: isTabletScreen,
-              [styles.features_container]: isTabletScreen
+          <div
+            ref={featuresRef.ref}
+            className={classNames({
+              [styles.slide]: true,
+              [styles.right]: true,
+              [styles.to_center]: featuresRef.inView
             })}
-          />
+          >
+            <BackflipSide
+              items={features}
+              itemsAccessLimit={featuresAccessLimit}
+              className={classNames({ [styles.features]: true })}
+              containerStyles={classNames({
+                [styles.with_bg]: isTabletScreen,
+                [styles.features_container]: isTabletScreen
+              })}
+            />
+          </div>
         ) : null}
       </div>
 
-      <div className={classNames('container', styles.container)}>
+      <div
+        ref={descriptionRef.ref}
+        className={classNames({
+          container: true,
+          [styles.container]: true,
+          [styles.slide]: isTabletScreen,
+          [styles.left]: isTabletScreen,
+          [styles.to_center]: descriptionRef.inView && isTabletScreen
+        })}
+      >
         <div className={classNames(styles.price_wrapper)}>
           <p className={classNames(styles.price)}>
             {cost.currency}&nbsp;{cost.amount}
@@ -112,29 +133,59 @@ function PreorderEditionCard({
 
             <Icon name={ICON_NAME.LINE} className={styles.separator} role="separator" />
 
-            <BackflipSide
-              items={features}
-              itemsAccessLimit={featuresAccessLimit}
-              className={classNames(styles.features)}
-            />
+            <div
+              ref={featuresRef.ref}
+              className={classNames({
+                [styles.slide]: true,
+                [styles.right]: true,
+                [styles.to_center]: featuresRef.inView,
+                [styles.delay]: featuresRef.inView
+              })}
+            >
+              <BackflipSide
+                items={features}
+                itemsAccessLimit={featuresAccessLimit}
+                className={classNames(styles.features)}
+              />
+            </div>
           </div>
         ) : null}
 
         {isSmallTabletScreenOnly ? (
-          <BackflipSide
-            items={features}
-            itemsAccessLimit={featuresAccessLimit}
-            className={classNames(styles.features)}
-            containerStyles={classNames(
-              styles.with_bg,
-              styles.features_container,
-              styles.features_small
-            )}
-          />
+          <div
+            ref={featuresRef.ref}
+            className={classNames({
+              [styles.slide]: true,
+              [styles.right]: true,
+              [styles.to_center]: featuresRef.inView,
+              [styles.delay]: featuresRef.inView && isMobileScreen
+            })}
+          >
+            <BackflipSide
+              items={features}
+              itemsAccessLimit={featuresAccessLimit}
+              className={classNames(styles.features)}
+              containerStyles={classNames(
+                styles.with_bg,
+                styles.features_container,
+                styles.features_small
+              )}
+            />
+          </div>
         ) : null}
 
         {details ? (
-          <div className={classNames(styles.description_wrapper)}>
+          <div
+            ref={descriptionRef.ref}
+            className={classNames({
+              [styles.description_wrapper]: true,
+              [styles.slide]: isSmallTabletScreenOnly || isMobileScreen,
+              [styles.left]: isSmallTabletScreenOnly || isMobileScreen,
+              [styles.to_center]:
+                descriptionRef.inView && (isSmallTabletScreenOnly || isMobileScreen),
+              [styles.delay]: descriptionRef.inView && isMobileScreen
+            })}
+          >
             {isTabletScreen ? (
               <div role="separator" className={classNames(styles.divider_line)} />
             ) : null}

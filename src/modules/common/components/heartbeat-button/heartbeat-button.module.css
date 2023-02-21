@@ -15,8 +15,6 @@
 
   color: var(--clr-dark-500);
   cursor: pointer;
-
-  /* transition: all 6ms ease-in; */
 }
 
 .animation_holder {
@@ -30,7 +28,7 @@
   background-repeat: repeat-x;
   background-size: auto 100%;
 
-  animation: heartbeat-3-beats-colored 4s var(--heartbeat-anim-config);
+  animation: beat 4s var(--heartbeat-anim-config);
   z-index: -1;
 }
 
