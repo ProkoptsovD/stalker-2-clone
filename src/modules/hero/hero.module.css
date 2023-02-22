@@ -214,3 +214,23 @@
     width: 14rem;
   }
 }
+
+/* leaves scene styles */
+.leaves_scene,
+.leaves_scene_world {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}

@@ -25,16 +25,33 @@ import Distributors from '../common/components/distributors';
 
 import { distributorList } from '../common/constants/distributors.const';
 import { availableDate, availableText } from '../common/constants/release-date.const';
+import { LeafScene } from '../../lib/leaf-scene/leaf-scene';
+import { Leaf } from '../../lib/leaf-scene/leaf';
+import { leafSceneDefaultConfig } from '../../lib/leaf-scene/config';
 
 function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   const prevClientXPos = React.useRef<number>(0);
   const heroWrapperRef = React.useRef<HTMLDivElement | null>(null);
   const sectionRef = React.useRef<HTMLElement | null>(null);
+  const isFirstRender = React.useRef<boolean>(true);
 
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const isDesktopAndLargeDesktop = useMediaQuery('(min-width: 1024px) and (max-width: 1279px)');
 
   React.useEffect(() => {
+    if (isFirstRender.current) {
+      const leaves = new LeafScene(`.${styles.leaves_scene}`, Leaf, {
+        ...leafSceneDefaultConfig,
+        numLeaves: 25,
+        worldClassName: styles.leaves_scene_world
+      });
+      leaves.setLeafClassName(styles.leaf).init().render();
+
+      isFirstRender.current = false;
+
+      return () => leaves.unsubscribe();
+    }
+
     if (heroWrapperRef.current && sectionRef.current && isDesktopAndLargeDesktop) {
       const { height } = heroWrapperRef.current.getBoundingClientRect();
 
@@ -96,6 +113,7 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
     <section ref={sectionRef} className={styles.section}>
       <h1 className="hidden">{heroSectionHeading}</h1>
       <div onMouseMove={mouseMoveHandler} className={styles.outer_wrapper}>
+        <div className={styles.leaves_scene}></div>
         <div ref={heroWrapperRef} className={classNames('container', styles.hero_wrapper)}>
           <div className={styles.content_layout}>
             <img className={styles.logo} src={logoImg} alt={logoImgAlt} />
@@ -148,7 +166,7 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   );
 }
 
-export default Hero;
+export default React.memo(Hero);
 
 export type HeroProps = {
   ButtonComponent?: React.FunctionComponent<HeartbeatButtonProps>;
