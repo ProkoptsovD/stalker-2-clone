@@ -23,36 +23,15 @@ export class HttpClient {
   }
 
   public post<A, B>(url: string, params?: HttpClientParams) {
-    const { data, toJSON, ...restParams } = params ?? {};
-
-    const serialized = toJSON ? this.serialize(Boolean(params?.toJSON), data) : data;
-
-    return this.service.post<A, B, HttpClientParams>(this.makeFullUrl(url), {
-      data: serialized,
-      ...restParams
-    });
+    return this.service.post<A, B, HttpClientParams>(this.makeFullUrl(url));
   }
 
   public put<A, B, C>(url: string, id: string, params: HttpClientParams) {
-    const { data, toJSON, ...restParams } = params ?? {};
-
-    const serialized = toJSON ? this.serialize(Boolean(params?.toJSON), data) : data;
-
-    return this.service.put<A, B, HttpClientParams>(this.makeFullUrl(url, id), {
-      data: serialized,
-      ...restParams
-    });
+    return this.service.put<A, B, HttpClientParams>(this.makeFullUrl(url, id));
   }
 
   public patch<A, B>(url: string, id: string, params: HttpClientParams) {
-    const { data, toJSON, ...restParams } = params ?? {};
-
-    const serialized = toJSON ? this.serialize(Boolean(params?.toJSON), data) : data;
-
-    return this.service.patch<A, B, HttpClientParams>(this.makeFullUrl(url, id), {
-      data: serialized,
-      ...restParams
-    });
+    return this.service.patch<A, B, HttpClientParams>(this.makeFullUrl(url, id));
   }
 
   public delete<A, B>(url: string, id: string, params: HttpClientParams) {
