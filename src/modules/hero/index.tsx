@@ -39,7 +39,7 @@ function Hero({ ButtonComponent = HeartbeatButton }: HeroProps) {
   const isDesktopAndLargeDesktop = useMediaQuery('(min-width: 1024px) and (max-width: 1279px)');
 
   React.useEffect(() => {
-    if (isFirstRender.current) {
+    if (isFirstRender.current && isDesktop) {
       const leaves = new LeafScene(`.${styles.leaves_scene}`, Leaf, {
         ...leafSceneDefaultConfig,
         numLeaves: 25,

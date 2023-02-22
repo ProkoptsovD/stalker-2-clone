@@ -169,7 +169,7 @@ export class PixiApp {
   }
 
   #initDemolitionEffectAnimation() {
-    const EASE_FUNC = 'slow(0.5, 1, false)';
+    const EASE_FUNC = 'expo.out';
 
     gsap.to(this.#displacementSpriteFromTextureImage as Sprite, { y: 0, duration: 4 });
     gsap.to((this.#displacementFilterFromSprite as DisplacementFilter).scale, {
