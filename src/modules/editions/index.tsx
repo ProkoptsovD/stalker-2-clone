@@ -78,6 +78,7 @@ function Editions({ className }: EditionsProps) {
               [styles.static]: !inView
             })}
             className={classNames({ [styles.hidden]: isDigitalVisible })}
+            bodyConfig={{ centerMode: !isMobileScreen }}
           >
             {editionList.physical.map(({ bgPoster, poster, ...edition }, index) => (
               <EditionCard
