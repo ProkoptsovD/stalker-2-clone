@@ -33,7 +33,7 @@ export class LeafScene<C extends HTMLElement | string, L extends typeof Leaf> {
       typeof container !== 'string'
         ? container
         : (document.querySelector(container) as HTMLElement);
-    console.log(this.viewport);
+    this.viewport;
 
     this.world = document.createElement(worldContainerElementTag as keyof HTMLElementTagNameMap);
     this.leaves = [];
